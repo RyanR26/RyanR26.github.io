@@ -1,3 +1,5 @@
+import { render } from '../vendor/karbon.js';
+
 const App = {
 
   container: document => document.getElementById('app-container'),
