@@ -1,15 +1,14 @@
-
 import { div } from '../vendor/modules/HTMLElements.js';
 import { LocalTime } from '../vendor/modules/time.js';
 import { Interval } from '../vendor/modules/subscriptions.js';
 
-interface actions {
-  tick: Function
-}
+// interface actions {
+//   tick: Function
+// }
 
-interface state { 
-  navActive: boolean
-}
+// interface state { 
+//   navActive: boolean
+// }
 
 interface props {
   time: Date,
@@ -41,10 +40,10 @@ export const ClockActions = (id: string='clock'): Function => (dispatch: dispatc
   }
 })
 
-export const ClockSubscriptions = (state: state, actions: actions): object => ({
+export const ClockSubscriptions = (active: boolean, actions: { tick: Function }): object => ({
   name: Interval,
   action: actions.tick,
-  when: state.navActive,
+  when: active,
   options: { 
     time: 1000
   }

@@ -2,19 +2,28 @@ import './style.css'
 import { Switch, Route, routerState, routerConfig, routerActions, routerSubscriptions } from '../vendor/modules/Router.js';
 import { ClockState, ClockActions, ClockSubscriptions } from './clock.ts';
 import { NavView } from './nav.ts';
-import { main, div, nav } from '../vendor/modules/HTMLElements.js';
+import { main, div } from '../vendor/modules/HTMLElements.js';
 import { Delay } from '../vendor/modules/time.js';
 const AboutModule: object = import('./about.ts');
+
+declare global {
+  interface Window {
+    karbon: {
+      render: Function,
+      hydrate: Function
+    };
+  }
+}
 
 interface state {
   [key: string]: any  
 }
 
 interface actions {
-  [key: string]: Object
+  [key: string]: any
 }
 
-const logFxMsg = value => ['effect', { def: () => console.log(value) }];
+// const logFxMsg = value => ['effect', { def: () => console.log(value) }];
 
 const App = {
 
@@ -34,7 +43,7 @@ const App = {
 
   subscriptions: (state: state, actions: actions) => [
     ...routerSubscriptions(actions.routerActions),
-    ClockSubscriptions(state, actions.ClockActions)
+    ClockSubscriptions(state.navActive, actions.ClockActions)
   ],
 
   tap: {
@@ -43,7 +52,7 @@ const App = {
     subscriptions: (data: object) => console.log('SUBS: ', data)
   },
 
-  init: (actions: actions) => {
+  init: () => {
 
     routerConfig({
       hooks: [
@@ -63,7 +72,7 @@ const App = {
   },
 
   view: 
-  (state: state, actions: actions) => 
+  (state: state) => 
   (e: Function, x: Function, { component: c, lazy}: {component: Function, lazy: Function }) => {
 
     e(main); 

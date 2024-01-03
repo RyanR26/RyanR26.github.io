@@ -1,6 +1,6 @@
 import { Switch, Route } from '../vendor/modules/Router.js';
 import { NavView } from './nav.ts';
-import { main, div, nav } from '../vendor/modules/HTMLElements.js';
+import { div } from '../vendor/modules/HTMLElements.js';
 
 export const RouterView = (props: object): Function => (e: Function, x: Function, { component: c }: { component: Function }): void => {
 

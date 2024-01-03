@@ -1,14 +1,11 @@
-import { h1, nav, div, section, span } from '../vendor/modules/HTMLElements.js';
+import { nav, div, span } from '../vendor/modules/HTMLElements.js';
+
 import { Link } from '../vendor/modules/Router.js';
 import { ClockView } from './clock.js';
 
 interface props {
   routeTransition: string,
   clock: object
-}
-
-export const NavState = {
-
 }
 
 export const NavView = (props: props): Function => (e: Function, x: Function, {component: c}: {component: Function}): void => {
