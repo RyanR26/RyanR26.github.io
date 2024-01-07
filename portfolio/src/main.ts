@@ -4,7 +4,7 @@ import { ClockState, ClockActions, ClockSubscriptions } from './clock.ts';
 import { NavView } from './nav.ts';
 import { main, div } from '../vendor/modules/HTMLElements.js';
 import { Delay } from '../vendor/modules/time.js';
-const AboutModule: object = import('./about.ts');
+import { CarouselActions, CarouselState, CarouselSubscriptions } from './Carousel.ts';
 
 declare global {
   interface Window {
@@ -23,8 +23,6 @@ interface actions {
   [key: string]: any
 }
 
-// const logFxMsg = value => ['effect', { def: () => console.log(value) }];
-
 const App = {
 
   container: (document: Document) => document.getElementById('app'),
@@ -32,18 +30,21 @@ const App = {
   state: {
     ...routerState(),
     ...ClockState('clock'),
+    ...CarouselState('carouselProjectOne'),
     navActive: true,
     routeTransition: null
   },
 
   actions: [
     { routerActions },
-    { ClockActions: ClockActions('clock') }
+    ClockActions('clock'),
+    CarouselActions('carouselProjectOne')
   ],
 
   subscriptions: (state: state, actions: actions) => [
     ...routerSubscriptions(actions.routerActions),
-    ClockSubscriptions(state.navActive, actions.ClockActions)
+    // ClockSubscriptions('clock', state.navActive, actions),
+    CarouselSubscriptions('carouselProjectOne', state.router.current === 'work', actions)
   ],
 
   tap: {
@@ -72,38 +73,57 @@ const App = {
   },
 
   view: 
+
   (state: state) => 
   (e: Function, x: Function, { component: c, lazy}: {component: Function, lazy: Function }) => {
 
+    console.log(state)
+
+    const mainNav = (): void => {
+      c({ NavView }, { props: { ...state }})
+    }
+
+    const error = (): void => {
+      e(div, { text: 'An error has occurred, please refresh the page and try again.'})
+      x(div)
+    }
+
     e(main); 
-
       c(Switch(
-
-        Route('/', () => c(
-          { NavView }, { props: { ...state }}
-        )),
-
+        Route('/', () => {
+          mainNav()
+        }),
         Route('/about', () => {
           lazy(
-            AboutModule, 
-            (m: { AboutView: Function }) => c({ AboutView: m.AboutView }, { props: { ...state }})
+            () => import('./about.ts'), 
+            (m: { AboutView: Function }) => c({ AboutView: m.AboutView }, { props: { ...state }}),
+            () => mainNav(),
+            () => error()
           )
         }),
-
-        Route('/contact', () => {
-          e(div, { text: 'contact me', class: 'screen-container'})
-          x(div)
+        Route('/work', () => {
+          lazy(
+            () => import('./work.ts'), 
+            (m: { WorkView: Function }) => c({ WorkView: m.WorkView }, { props: { ...state }}),
+            () => mainNav(),
+            () => error()
+          )
         }),
-
-        Route('/projects', () => {
+        Route('/skills', () => {
+          lazy(
+            () => import('./skills.ts'), 
+            (m: { SkillsView: Function }) => c({ SkillsView: m.SkillsView }, { props: { ...state }}),
+            () => mainNav(),
+            () => error()
+          )
+        }),
+        Route('/personl-projects', () => {
           e(div, { text: 'projects', class: 'screen-container'})
           x(div)
         })
-
       ));
-    
     x(main)
   }
-};
+}
 
 window.karbon.render(App)

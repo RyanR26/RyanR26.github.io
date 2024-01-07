@@ -1,0 +1,123 @@
+{
+  "title": "RYAN RUDMAN",
+  "section": "work",
+  "intro": "The span of my career has seen me working across many different projects and clients, each with very different needs and audiences. ",
+  "subIntro": "This extensive commercial experience has helped me develop my skills and abilities to adapt quickly to rapidly changing environments and requirements.",
+  "content": "Below are some of the companies that I have had the privilage to work with.",
+  "brands": [
+    {
+      "name": "Lexus",
+      "url": "/work/lexus",
+      "img": "/images/logos/Lexus.png",
+      "placeholderImg": "/images/logos/Lexus-thumb.png"
+    },
+    {
+      "name": "Toyota",
+      "url": "/toyota",
+      "img": "/images/logos/Toyota.png",
+      "placeholderImg": "/images/logos/Toyota-thumb.png"      
+    },
+    {
+      "name": "Canaccord Genuity",
+      "url": "/cannacord",
+      "img": "/images/logos/CG.png",
+      "placeholderImg": "/images/logos/CG-thumb.png"
+    },
+    {
+      "name": "Sunlife",
+      "url": "/sunlife",
+      "img": "/images/logos/Sunlife.png",
+      "placeholderImg": "/images/logos/Sunlife-thumb.png"
+    },
+    {
+      "name": "Forevermark",
+      "url": "/forevermark",
+      "img": "/images/logos/Forevermark.png",
+      "placeholderImg": "/images/logos/Forevermark-thumb.png"
+    },
+    {
+      "name": "Expedia",
+      "url": "/expedia",
+      "img": "/images/logos/Expedia.png",
+      "placeholderImg": "/images/logos/Expedia-thumb.png"
+    },
+    {
+      "name": "Unilever",
+      "url": "/unilever",
+      "img": "/images/logos/Unilever.png",
+      "placeholderImg": "/images/logos/Unilever-thumb.png"
+    },
+    {
+      "name": "Land Rover",
+      "url": "/landrover",
+      "img": "/images/logos/LandRover.png",
+      "placeholderImg": "/images/logos/LandRover-thumb.png"
+    },
+    {
+      "name": "NEFF",
+      "url": "/neff",
+      "img": "/images/logos/NEFF.png",
+      "placeholderImg": "/images/logos/NEFF-thumb.png"
+    },
+    {
+      "name": "Trek",
+      "url": "/trek",
+      "img": "/images/logos/Trek.png",
+      "placeholderImg": "/images/logos/Trek-thumb.png"
+    },
+    {
+      "name": "Wacoal",
+      "url": "/wacoal",
+      "img": "/images/logos/Wacoal.png",
+      "placeholderImg": "/images/logos/Wacoal-thumb.png"
+    },
+    {
+      "name": "Haglofs",
+      "url": "/haglofs",
+      "img": "/images/logos/Haglofs.png",
+      "placeholderImg": "/images/logos/Haglofs-thumb.png"
+    },
+    {
+      "name": "Asics",
+      "url": "/asics",
+      "img": "/images/logos/Asics.png",
+      "placeholderImg": "/images/logos/Asics-thumb.png"
+    },
+    {
+      "name": "Thomas Cook",
+      "url": "/thomascook",
+      "img": "/images/logos/ThomasCook.png",
+      "placeholderImg": "/images/logos/ThomasCook-thumb.png"
+    },
+    {
+      "name": "Essential Travel",
+      "url": "/essentialtravel",
+      "img": "/images/logos/EssentialTravel.jpeg",
+      "placeholderImg": "/images/logos/EssentialTravel-thumb.jpeg"
+    }
+  ],
+  "showcase": {
+    "heading": "RECENT PROJECTS",
+    "projects": [
+    {
+      "brand": "Lexus",
+      "projectName": "AI Experience",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a arcu nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse vitae ante a nibh venenatis ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "tech": ["React.js", "SASS",  "Adobe Experience Manager", "Stable Diffusion AI"],
+      "images": [
+        "/images/projects/lexus-ai-experience/ai-1.png", 
+        "/images/projects/lexus-ai-experience/ai-2.png",
+        "/images/projects/lexus-ai-experience/ai-3.png", 
+        "/images/projects/lexus-ai-experience/ai-4.png"
+      ]
+    },
+    {
+      "brand": "Toyota",
+      "projectName": "New Model Release Marketing components",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a arcu nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse vitae ante a nibh venenatis ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "tech": ["React.js", "SASS",  "Adobe Experience Manager", "Stable Diffusion AI"],
+      "images": ["/images/projects/lexus-ai-experience/ai-2.png"]
+    }
+  ]
+  }
+}

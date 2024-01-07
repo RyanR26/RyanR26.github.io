@@ -1,0 +1,35 @@
+{
+  "title": "RYAN RUDMAN",
+  "section": "skills & abilities",
+  "intro": "Technologies come & go but it's the skill of being able to understand, reason and adapt to change that forms my foundation.",
+  "subIntro": "Of course, effeciently weilding the tools of the trade is still important! However, knowing everything is a futile pursuit, so a solid understanding of core concepts & the desire to keep learning is what makes me an asset to any project. ",
+  "rolesIntro": "In a more practical terms, my skillset allows me to help you with the following :",
+  "roles": [
+    "Developing and maintaining responsive, efficient user interfaces.",
+    "Collaborating with the project management and design teams to convert concepts and visual designs into working implementations.",
+    "Choosing the 'best' (not always the latest) technologies for the project and using them to create intuitive experiences",
+    "Ensuring cross-platform and browser compatibility",
+    "Ensuring site accessibility and performance.",
+    "Working together with back-end teams and other stakeholders to ensure seamless integration.",
+    "Providing estimations on timings for implemention of new work streams.",
+    "Working within tight time constraints and ensuring project delivery."
+  ],
+  "technologiesIntro": "A typical days work consists of me working with some/most of the following technologies/methodolgies in some way or form. Of course this is a non-exhaustive list and I have used and dabbled with many other tools and technologoies depening on the underlying project tech and requirements.",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "SASS",
+    "BEM",
+    "Responsive design",
+    "Javascript",
+    "Typescript",
+    "React",
+    "Node",
+    "NPM",
+    "Client side templating - Nunjucks, Twig, etc.",
+    "Build Tools - Webpack, Rollup, Vite etc",
+    "Integration with backend API's",
+    "Google Tag Manager",
+    "Git"
+  ]
+}

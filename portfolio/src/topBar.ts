@@ -6,17 +6,19 @@ interface props {
   section: 'string'
 }
 
-export const TopBarView = (props: props): Function => (e: Function, x: Function, {component: c}: {component: Function}): void => {
+export const TopBarView = 
 
-  e(section, { class: 'container' })
-    e(div, { class: 'content-section underline top-bar' })
-      e(div, { class: 'text-subheading', text: props.title }); 
-        e(span, { class: 'text-subheading text-serif', text: ' - ' + props.section }); x(span)
+(props: props): Function => 
+(e: Function, x: Function, {component: c}: {component: Function}): void => {
+
+  e(section, { class: 'top-bar dark-theme' })
+    e(div, { class: 'content-section container top-bar-content' })
+      e(div, { class: 'text-subheading dot-grid', text: props.title }); 
+        e(span, { class: 'text-subheading font-serif', text: ' - ' + props.section }); x(span)
       x(div)
       e(div, { class: 'close' })
         c(Link('', '/'))
       x(div)
     x(div)
   x(section)
-  
 }

@@ -221,7 +221,7 @@ const RouterLink = (props, actions) => (e, x) => {
   e('a', { 
     text: props.name, 
     href: props.href, 
-    class: props.href === props.current ? 'active' : '',
+    class: `${props.className || ''} ${props.href === props.current ? 'active' : ''}`,
     onclick: [
       actions.routerActions.navigate, 
       props.href, 
@@ -294,15 +294,17 @@ const RouterSwitch = ({routes, activeRoute}) => () => {
   }
 };
 
-export const Link = (name, href, beforeEnter, afterEnter, beforeLeave, callback) => [
+// PROPS = name, href, className, { beforeEnter, afterEnter, beforeLeave, callback } 
+export const Link = (name, href, className, hooks = {}) => [
   { RouterLink }, 
   { props: {
       name, 
       href,
-      beforeLeave,
-      beforeEnter,
-      afterEnter,
-      callback
+      className,
+      beforeLeave: hooks.beforeLeave,
+      beforeEnter: hooks.beforeEnter,
+      afterEnter: hooks.afterEnter,
+      callback: hooks.callback
     },
     mergeStateToProps: state => ({
       current: state.router.current

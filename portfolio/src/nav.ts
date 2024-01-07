@@ -1,5 +1,4 @@
 import { nav, div, span } from '../vendor/modules/HTMLElements.js';
-
 import { Link } from '../vendor/modules/Router.js';
 import { ClockView } from './clock.js';
 
@@ -8,12 +7,15 @@ interface props {
   clock: object
 }
 
-export const NavView = (props: props): Function => (e: Function, x: Function, {component: c}: {component: Function}): void => {
+export const NavView = 
+
+(props: props): Function => 
+(e: Function, x: Function, {component: c}: {component: Function}): void => {
 
   const navItem = (name: string, path: string, className?: string): void => {
-    e(div, { class: `nav-item ${className} ${ props.routeTransition === 'in' ? 'fade-out' : 'fade-in'}`})
+    e(div, { class: `nav-item ${className || ''} ${ props.routeTransition === 'in' ? 'fade-out' : 'fade-in'}`})
       e(div)
-        c(Link(name, path))
+        c(Link(name, path, 'dot-grid'))
       x(div)
     x(div)
   }
@@ -40,20 +42,18 @@ export const NavView = (props: props): Function => (e: Function, x: Function, {c
   }
 
   e(nav, { class: 'nav' })
-
     contentItem(() => c({ ClockView }, { props: { ...props.clock }}))
-    navItem('about', '/about', 'blue')
+    navItem('about', '/about', 'pink')
     navItem('projects', '/projects')
-    navItem('contact', '/contact', 'red')
+    navItem('personal projects', '/peronsal-projects', 'red')
     mainContent()
-    navItem('test2', '/test2', 'yellow')
+    navItem('work', '/work', 'purple')
     navItem('test3', '/test3')
-    navItem('test4', '/test4', 'orange')
+    navItem('skills & abilities', '/skills', 'green')
     contentItem(() => {
       e(div, { class: 'bottom-right', text: 'Built with Karbon UI framework'})
       x(div)
     })
-
   x(nav)
   
-};
+}
