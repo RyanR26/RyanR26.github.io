@@ -2,6 +2,7 @@ const lazyImageCache = {};
 
 const loadImage = url => new Promise((resolve, reject) => {
   const img = new Image();
+  const loaded = () => resolve(img)
   img.addEventListener('load', () => resolve(img));
   img.addEventListener('error', (err) => reject(err));
   img.src = url;
@@ -22,14 +23,25 @@ const LazyImageView = (props, actions) => {
   let src = cachedImg ? [cachedImg, 'loaded'] : [props.placeholderUrl, 'loading'];
 
   if (!cachedImg) {
+    let render;
+    lazyImageCache[props.url] = props.url
     loadImage(props.url).then(img => {
-      lazyImageCache[props.url] = img.src;
-        actions.LazyImageActions.rerender();
+      if (!render) {
+        render = setTimeout(() => {
+          actions.LazyImageActions.rerender();
+        }, 100);
+      } else {
+        clearTimeout(render);
+      }
     })
-  }
+  };
 
   return (e) => {
-    e('img', { src: src[0], class: `lazy-image ${src[1]} ${props.classes}`, alt: props.altText || 'lazy image', style: { width: '500px' } })
+    e('img', { 
+      src: src[0], 
+      class: `lazy-image ${src[1]} ${props.classes}`, 
+      alt: props.altText || 'lazy image'
+    })
   }
 };
 

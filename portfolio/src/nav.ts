@@ -28,7 +28,7 @@ export const NavView =
 
   const mainContent = (): void => {
     e(div, { class: `nav-item content-container ${ props.routeTransition === 'in' ? 'transition-in' : 'transition-out'}`})
-      e(div); 
+      e(div, { class: 'logo-container' }); 
         logo()
       x(div) 
     x(div)

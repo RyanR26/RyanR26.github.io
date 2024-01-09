@@ -17,4 +17,5 @@ export const section = 'section';
 export const nav = 'nav';
 export const ul = 'ul';
 export const li = 'li';
-
+export const video = 'video';
+export const source = 'source';

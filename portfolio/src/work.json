@@ -97,26 +97,77 @@
     }
   ],
   "showcase": {
-    "heading": "RECENT PROJECTS",
+    "heading": "RECENT PROJECT SHOWCASE",
     "projects": [
     {
-      "brand": "Lexus",
-      "projectName": "AI Experience",
+      "brand": "LEXUS",
+      "name": "AI Experience",
       "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a arcu nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse vitae ante a nibh venenatis ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-      "tech": ["React.js", "SASS",  "Adobe Experience Manager", "Stable Diffusion AI"],
-      "images": [
-        "/images/projects/lexus-ai-experience/ai-1.png", 
-        "/images/projects/lexus-ai-experience/ai-2.png",
-        "/images/projects/lexus-ai-experience/ai-3.png", 
-        "/images/projects/lexus-ai-experience/ai-4.png"
-      ]
+      "techList": ["React.js", "SASS", "Webpack",  "Adobe Experience Manager", "Stable Diffusion AI Engine"],
+      "media": [ 
+        {
+          "type": "video",
+          "url": "/images/projects/lbx-hub/signed-out.mp4"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-ai-experience/ai-2.png"
+        },
+        {
+          "type": "video",
+          "url": "/images/projects/lexus-style-selector/style-selector.mp4"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-ai-experience/ai-4.png"
+        }, 
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-ai-experience/ai-5.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-ai-experience/ai-6.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-ai-experience/ai-7.png"
+        }
+      ],
+      "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"
     },
     {
-      "brand": "Toyota",
-      "projectName": "New Model Release Marketing components",
+      "brand": "TOYOTA",
+      "name": "New Model Release Marketing components",
       "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a arcu nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse vitae ante a nibh venenatis ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-      "tech": ["React.js", "SASS",  "Adobe Experience Manager", "Stable Diffusion AI"],
-      "images": ["/images/projects/lexus-ai-experience/ai-2.png"]
+      "techList": ["React.js", "SASS",  "Adobe Experience Manager", "Stable Diffusion AI"],
+      "media": [
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-experience-configurator/exp-config-1.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-experience-configurator/exp-config-2.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-experience-configurator/exp-config-3.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-experience-configurator/exp-config-4.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-experience-configurator/exp-config-5.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-experience-configurator/exp-config-6.png"
+        }
+      ],
+      "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"
     }
   ]
   }

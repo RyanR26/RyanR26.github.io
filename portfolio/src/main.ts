@@ -5,6 +5,7 @@ import { NavView } from './nav.ts';
 import { main, div } from '../vendor/modules/HTMLElements.js';
 import { Delay } from '../vendor/modules/time.js';
 import { CarouselActions, CarouselState, CarouselSubscriptions } from './Carousel.ts';
+import { IntersectObserver } from '../vendor/modules/subscriptions.js';
 
 declare global {
   interface Window {
@@ -23,6 +24,36 @@ interface actions {
   [key: string]: any
 }
 
+const globalActions = (dispatch: { msgs: Function }) => ({
+
+  log(arg: any) {
+    dispatch.msgs(
+      ['effect', {
+        def: () => console.log('LOG ' + arg)
+      }])
+  },
+
+  playPauseVideo(entry: IntersectionObserverEntry) {
+    dispatch.msgs(
+      ['effect', {
+        name: Fx.playPauseVideo,
+        args: [entry.target, entry.isIntersecting && entry.target.classList.contains('playing')]
+      }]
+    )
+  }
+})
+
+const Fx = {
+  
+  playPauseVideo(element: HTMLVideoElement, condition: boolean) {
+    if (condition) {
+      element.play()
+    } else {
+      element.pause()
+    }
+  }
+}
+
 const App = {
 
   container: (document: Document) => document.getElementById('app'),
@@ -30,28 +61,38 @@ const App = {
   state: {
     ...routerState(),
     ...ClockState('clock'),
-    ...CarouselState('carouselProjectOne'),
+    ...CarouselState('carouselProject1'),
+    ...CarouselState('carouselProject2'),
     navActive: true,
     routeTransition: null
   },
 
   actions: [
+    { globalActions },
     { routerActions },
     ClockActions('clock'),
-    CarouselActions('carouselProjectOne')
+    CarouselActions('carouselProject1'),
+    CarouselActions('carouselProject2')
   ],
 
   subscriptions: (state: state, actions: actions) => [
     ...routerSubscriptions(actions.routerActions),
-    // ClockSubscriptions('clock', state.navActive, actions),
-    CarouselSubscriptions('carouselProjectOne', state.router.current === 'work', actions)
+    ClockSubscriptions('clock', state.navActive, actions),
+    ...CarouselSubscriptions('carouselProject1', state.router.current === '/work', actions),
+    ...CarouselSubscriptions('carouselProject2', state.router.current === '/work', actions),
+    { 
+      name: IntersectObserver,
+      action: actions.globalActions.playPauseVideo,
+      options: { target: '.video' },
+      when: state.router.current === '/work'
+    }
   ],
 
-  tap: {
-    state: (data: object) => console.log('STATE: ', data),
-    message: (data: object) => console.log('MSG: ', data),
-    subscriptions: (data: object) => console.log('SUBS: ', data)
-  },
+  // tap: {
+  //   state: (data: object) => console.log('STATE: ', data),
+  //   message: (data: object) => console.log('MSG: ', data),
+  //   subscriptions: (data: object) => console.log('SUBS: ', data)
+  // },
 
   init: () => {
 
@@ -60,12 +101,12 @@ const App = {
         { 
           routes: ['/'], 
           beforeLeave: [ 
-            ['state', { path: ['routeTransition'], value: 'in'}],
+            ['state', { path: [['routeTransition', 'navActive']], value: ['in', false]}],
             Delay(1500) 
           ],
           afterEnter: [ 
             Delay(10),
-            ['state', { path: ['routeTransition'], value: 'out'}]
+            ['state', { path: [['routeTransition', , 'navActive']], value: ['out', true]}]
           ]
         }
       ]
@@ -76,8 +117,6 @@ const App = {
 
   (state: state) => 
   (e: Function, x: Function, { component: c, lazy}: {component: Function, lazy: Function }) => {
-
-    console.log(state)
 
     const mainNav = (): void => {
       c({ NavView }, { props: { ...state }})

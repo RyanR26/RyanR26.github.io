@@ -1,6 +1,6 @@
 import * as data from './skills.json';
 import { div, section, ul, li } from '../vendor/modules/HTMLElements.js';
-import { ScreenContainerView } from './screenContainer.js';
+import { ScreenContainerView } from './screenContainer.ts';
 
 export const SkillsView = 
 
@@ -43,7 +43,7 @@ export const SkillsView =
             e(li, { text: technology })
             x(li)
           })
-
+          
         x(ul)
       x(div)
     x(section)

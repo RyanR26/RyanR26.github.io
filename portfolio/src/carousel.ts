@@ -1,4 +1,5 @@
 import { div, button } from '../vendor/modules/HTMLElements.js';
+import { Delay, Debounce } from '../vendor/modules/time.js';
 
 interface props { 
   id: string,
@@ -6,15 +7,18 @@ interface props {
   transformOffset: number,
   items: object[],
   itemView: Function,
+  itemWidth: number | null,
   config: { 
-    controls: boolean
+    controls: boolean,
+    gap: number
   }
 }
 
 interface actions { 
   [key: string]: { 
     next: Function, 
-    resizeCarousel: Function
+    resizeCarousel: Function,
+    setCarouselItemWidth: Function
   }
 }
 
@@ -26,15 +30,16 @@ export const CarouselState = (id: string): object => ({
   [id]: {
     activeIndex: 0,
     transformOffset: 0,
+    itemWidth: null,
     controls: true
   }
 })
 
 export const CarouselActions = (id: string): object => ({ 
   
-  [id]: (dispatch: { msgs: Function}): object => ({
+  [id]: (dispatch: { msgs: Function}): object => {
 
-    next(direction: string, itemsLength: number, event: Event) {
+    function next(direction: string, itemsLength: number, gap: number, event: Event) {
 
       event.preventDefault();
 
@@ -64,24 +69,55 @@ export const CarouselActions = (id: string): object => ({
         (width: number, state: state,) => 
           ['state', {
             path: [id, 'transformOffset'],
-            value: width * state[id].activeIndex
+            value: (width + gap) * state[id].activeIndex
           }]
       )
       .done((output: string | undefined, success: boolean) => {
         console.log(output, success)
       })
-    },
+    }
 
-    resizeCarousel() {
+    function resizeCarousel() {
+
       dispatch
       .msgs(
+        (state: state) =>
+          ['control', {
+            if: state[id].activeIndex !== 0
+          }],
         ['state', {
           path: [id, ['activeIndex', 'transformOffset']],
           value: [0, 0]
         }]
+      ).done(() => {
+        setCarouselItemWidth();
+      })
+    }
+
+    function setCarouselItemWidth() {
+
+      dispatch
+      .msgs(
+        Debounce(100, id),
+        Delay(100),
+        ['effect', {
+          name: CarouselFx.getContainerEl,
+          args: [id]
+        }],
+        (width: number) => 
+          ['state', {
+            path: [id, 'itemWidth'],
+            value: width
+          }]
       )
     }
-  })
+
+    return {
+      next, 
+      resizeCarousel,
+      setCarouselItemWidth
+    }
+  }
 });
 
 const CarouselFx = {
@@ -91,48 +127,59 @@ const CarouselFx = {
   },
 
   getActiveItemEl(event: Event) {
-    return (event.target as HTMLElement).closest('.carousel')!.querySelector('.active')
+    return (event.target as HTMLElement).closest('.carousel')!.querySelector('.active');
   },
 
-  scrollIntoView(element: Element) {
-    element.scrollIntoView({ 
-      behavior: 'smooth',  
-      block: 'nearest',
-      inline: 'center' 
-    });
+  getContainerEl(id: string) {
+    return document.getElementById(id)?.clientWidth;
   }
 };
 
-export const CarouselSubscriptions = (id: string, active: boolean, actions: actions): object => ({ 
+export const CarouselSubscriptions = (id: string, active: boolean, actions: actions): object[] => [
+  { 
     name: 'resize', 
     action: actions[id].resizeCarousel,
     when: active,
     key: id
-});
+  },
+  {
+    action: actions[id].setCarouselItemWidth,
+    when: active,
+    key: id
+  }
+];
 
 export const CarouselView = 
 
 (props: props, actions: actions): Function => 
 (e: Function, x: Function): void => {
   
-  e(div, { class: 'carousel', text: 'carousel container' })
+  e(div, { id: props.id, class: 'carousel' })
 
     if (props.config.controls) {
       e(button, { 
+        class: 'carousel-button prev',
         text: 'prev', 
-        onclick: [actions[props.id].next, 'prev', props.items.length]})
+        onclick: [actions[props.id].next, 'prev', props.items.length, props.config.gap ]})
       x(button)
       e(button, { 
+        class: 'carousel-button next',
         text: 'next', 
-        onclick: [actions[props.id].next, 'next', props.items.length]})
+        onclick: [actions[props.id].next, 'next', props.items.length, props.config.gap]})
       x(button)
     }
     e(div, { class: 'carousel-container', style: { overflow: 'hidden', width: '100%'}})
       e(div, { class: 'carousel-track', style: { transform: `translate3d(-${props.transformOffset}px, 0, 0)`} })
 
         props.items.map((item, index) => {
-          e(div, { class: `carousel-item ${index === props.activeIndex ? 'active' : ''}`})
-            props.itemView(item);
+          e(div, { 
+            class: `carousel-item ${index === props.activeIndex ? 'active' : ''}`, 
+            style: {
+              ...(props.config.gap ? { 'margin-right': props.config.gap + 'px' } : {}),
+              ...(props.itemWidth ? { width : props.itemWidth + 'px' } : {})
+            }
+          })
+            props.itemView(item, index, props);
           x(div)
         });
 
@@ -145,20 +192,25 @@ export const Carousel = (
   id: string, 
   items: object[] | string[], 
   itemView: Function, 
-  config?: { controls: boolean }
+  config?: { 
+    controls: boolean ,
+    gap: number
+  }
 ): object[] => [
 
   { CarouselView }, 
   { props: {
       id,
-      config: config || { controls : true },
+      config: config || { controls : true, gap: 0 },
       items,
-      itemView: (item: Function) => {
-        itemView(item)
+      itemView: (item: Function, index: number, props: object) => {
+        itemView(item, index, props)
       }
     },
     mergeStateToProps: (state: { [key: string]: any }) => ({
       activeIndex: state[id].activeIndex,
-      transformOffset: state[id].transformOffset
-    })
+      transformOffset: state[id].transformOffset,
+      itemWidth: state[id].itemWidth
+    }),
+    subscribe: [id]
 }]

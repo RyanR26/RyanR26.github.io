@@ -20,6 +20,7 @@ export const ClockActions = (id: string='clock'): object => ({
   [id]: (dispatch: { msgs: Function }): object => ({
 
     tick() {
+      console.log('tick')
       dispatch.msgs(
         LocalTime(),
         (time: Date) => 
