@@ -1,6 +1,7 @@
-import * as data from './work.json';
-import { div, section, ul, li, span, img } from '../vendor/modules/HTMLElements.js';
+import * as data from './data/work.json';
+import { div, section, ul, li, span, h4 } from '../vendor/modules/HTMLElements.js';
 import { ScreenContainerView } from './screenContainer.ts';
+import { SectionIntroView } from './sectionIntro.ts';
 import { LazyImage } from '../vendor/modules/lazyImage.js';
 import { Link, Switch, Route } from '../vendor/modules/Router.js';
 import { ProjectShowcaseView } from './projectShowcase.ts';
@@ -13,24 +14,21 @@ export const WorkView =
   c({ ScreenContainerView }, { props: {
     title: data.title,
     section: data.section,
+    colorTheme: data.colorTheme,
     children: () => {
 
-      e(section, { class: 'container'})
-        e(div, { class: 'content-section underline text-heading', 
-          text: data.intro })
-        x(div)
-      x(section)
-      e(section, { class: 'container'})
-        e(div, { class: 'content-section underline text-subheading font-serif', 
-          text: data.subIntro })
-        x(div)
-      x(section)
+      c({ SectionIntroView }, {
+        props: {
+          intro: data.intro,
+          subIntro: data.subIntro
+      }})
+
       e(section, { class: 'container'})
         e(div, { class: 'content-section underline text-container', 
           text: data.content })
         x(div)
       x(section)
-      e(section, { class: 'container'})
+      e(section, { class: 'container spacer'})
         e(ul, { class: 'client-tiles' })
 
           data.brands.forEach((brand: { 
@@ -65,9 +63,9 @@ export const WorkView =
       x(section)
       e(section, { class: 'dark-theme' })
         e(div, { class: 'container spacer-lg'})
-          e(div, { class: 'content-section underline', text: data.showcase.heading }); x(div)
+          e(h4, { class: 'content-section underline', text: data.showcase.heading }); x(h4)
         x(div)
-        e(div, { class: 'project-showcasw-container' })
+        e(div, { class: 'project-showcase-container' })
 
           data.showcase.projects.forEach((
             project: object, 

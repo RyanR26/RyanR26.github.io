@@ -1,6 +1,7 @@
-import * as data from './skills.json';
+import * as data from './data/skills.json';
 import { div, section, ul, li } from '../vendor/modules/HTMLElements.js';
 import { ScreenContainerView } from './screenContainer.ts';
+import { SectionIntroView } from './sectionIntro.ts';
 
 export const SkillsView = 
 
@@ -10,13 +11,15 @@ export const SkillsView =
   c({ ScreenContainerView }, { props: {
     title: data.title,
     section: data.section,
+    colorTheme: data.colorTheme,
     children: () => {
-      e(section, { class: 'container'})
-        e(div, { class: 'content-section underline text-heading', text: data.intro }); x(div)
-      x(section)
-      e(section, { class: 'container'})
-        e(div, { class: 'content-section underline text-subheading font-serif', text: data.subIntro }); x(div)
-      x(section)
+  
+      c({ SectionIntroView }, {
+        props: {
+          intro: data.intro,
+          subIntro: data.subIntro
+      }})
+      
       e(section, { class: 'container'})
         e(div, { class: 'content-section underline', text: data.rolesIntro }); x(div)
       x(section)
@@ -43,7 +46,7 @@ export const SkillsView =
             e(li, { text: technology })
             x(li)
           })
-          
+
         x(ul)
       x(div)
     x(section)

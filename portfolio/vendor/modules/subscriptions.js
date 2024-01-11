@@ -13,6 +13,8 @@ export const Interval = (action, options) => {
 
 export const IntersectObserver = (action, options) => {
 
+  console.log('INTERSECTION')
+
   let config = {
     root: options.root ? document.querySelector(options.root) : document,
     rootMargin: options.rootMargin || '0px',

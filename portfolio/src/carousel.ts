@@ -78,7 +78,6 @@ export const CarouselActions = (id: string): object => ({
     }
 
     function resizeCarousel() {
-
       dispatch
       .msgs(
         (state: state) =>
@@ -135,19 +134,32 @@ const CarouselFx = {
   }
 };
 
-export const CarouselSubscriptions = (id: string, active: boolean, actions: actions): object[] => [
-  { 
-    name: 'resize', 
-    action: actions[id].resizeCarousel,
-    when: active,
-    key: id
-  },
-  {
-    action: actions[id].setCarouselItemWidth,
-    when: active,
-    key: id
+const CarouselUpdate = (action: Function, options: { id: string }) => {
+
+  let carouselEl: Element | null;
+
+  setTimeout(() => {
+    carouselEl = document.getElementById(options.id);
+
+    if (carouselEl) {
+      action()
+      window.addEventListener('resize', action)
+    }
+  }, 100)
+
+  return () => {
+    window.removeEventListener('resize', action)
   }
-];
+} 
+
+export const CarouselSubscriptions = (id: string, actions: actions, watch: string): object => ({
+  name: CarouselUpdate,
+  action: actions[id].resizeCarousel,
+  watch,
+  options: {
+    id
+  }
+})
 
 export const CarouselView = 
 

@@ -2307,10 +2307,10 @@ var karbon = (function (exports) {
         });
       }
 
-      action = isArray(sub.action) ? function () {
+      action = isArray(sub.action) ? function (arg) {
         var _sub$action;
 
-        return (_sub$action = sub.action)[0].apply(_sub$action, toConsumableArray(sub.action.slice(1)));
+        return (_sub$action = sub.action)[0].apply(_sub$action, toConsumableArray(sub.action.slice(1)).concat([arg]));
       } : sub.action;
       var subKey = (sub.key || '') + action.name + '_' + (sub.name || 'sub-key').toString().replace(/\s/g, '');
       sub.key = subKey;
@@ -2324,39 +2324,65 @@ var karbon = (function (exports) {
       if (!sub.name) {
 
         // this subscription action is called whenever the state changes
-        if (isUndefined(sub.when)) {
+        if (isUndefined(sub.when) && isUndefined(sub.watch)) {
           action();
         }
         // this subscription action is called once whenever the state changes and the 'when' condition is met
-        else if (sub.when) {
-            if (!cache[sub.key]) {
-              cache[sub.key] = true;
+        else if (sub.when || !!sub.watch) {
+            if (sub.when || isUndefined(sub.when) && !sub.watch || !!sub.watch && !cache[sub.key]) {
+              cache[sub.key] = {
+                when: sub.when,
+                watch: sub.watch,
+                unmount: null
+              };
               action();
             }
           }
           // this subscription action is called once whenever the state changes and the 'when' condition is not met
           else {
               if (cache[sub.key]) {
-                delete cache[sub.key];
+                if (sub.when === false) {
+                  delete cache[sub.key];
+                } else if (sub.watch && sub.watch !== cache[sub.key].watch) {
+                  cache[sub.key].watch = sub.watch;
+                  action();
+                }
               }
             }
       }
       // function denoted user or custom sub
       else if (isFunction(sub.name)) {
 
-          if (sub.when || isUndefined(sub.when)) {
+          if (sub.when || isUndefined(sub.when) && !sub.watch || !!sub.watch && !cache[sub.key]) {
+
             if (isUndefined(cache[sub.key])) {
+              console.log('unmount 1');
               subscription.setCache(sub.key, {
+                when: sub.when,
+                watch: sub.watch,
                 unmount: sub.name(action, sub.options)
               });
             }
           } else {
+
             var cachedSub = cache[sub.key];
             if (cachedSub) {
-              if (isFunction(cachedSub.unmount)) {
-                cachedSub.unmount();
+              // if (isFunction(cachedSub.unmount)) {
+              //   console.log('unmount 2')
+              //   cachedSub.unmount();
+              // }
+              if (sub.when === false) {
+                if (isFunction(cachedSub.unmount)) {
+                  cachedSub.unmount();
+                }
+                delete cache[sub.key];
+              } else if (sub.watch && sub.watch !== cachedSub.watch) {
+                if (isFunction(cachedSub.unmount)) {
+                  cachedSub.unmount();
+                }
+                cachedSub.watch = sub.watch;
+                sub.name(action, sub.options);
               }
-              delete cache[sub.key];
             }
           }
 
@@ -2371,7 +2397,7 @@ var karbon = (function (exports) {
 
             if (sub.when || isUndefined(sub.when)) {
 
-              if (!isDefined(subscription.getCache()[subKey])) {
+              if (isUndefined(cache[sub.key])) {
 
                 subscription.addEvent(sub.el || window, sub.name, subKey, action, isArray(sub.action) ? sub.action.slice(1) : undefined);
 
@@ -2381,7 +2407,7 @@ var karbon = (function (exports) {
                 }
                 /* END.DEV_ONLY */
               }
-            } else if (isDefined(subscription.getCache()[subKey])) {
+            } else if (cache[sub.key]) {
 
               subscription.removeEvent(sub.el || window, sub.name, subKey);
 

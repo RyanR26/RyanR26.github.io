@@ -1,5 +1,5 @@
 import { Link } from '../vendor/modules/Router.js';
-import { div, section, span } from '../vendor/modules/HTMLElements.js';
+import { div, section, span, h1 } from '../vendor/modules/HTMLElements.js';
 
 interface props {
   title: 'string',
@@ -13,9 +13,9 @@ export const TopBarView =
 
   e(section, { class: 'top-bar dark-theme' })
     e(div, { class: 'content-section container top-bar-content-container' })
-      e(div, { class: 'heading text-subheading dot-grid', text: props.title }); 
+      e(h1, { class: 'heading text-subheading dot-grid', text: props.title }); 
         e(span, { class: 'text-subheading font-serif', text: ' - ' + props.section }); x(span)
-      x(div)
+      x(h1)
       e(div, { class: 'close' })
         c(Link('', '/'))
       x(div)

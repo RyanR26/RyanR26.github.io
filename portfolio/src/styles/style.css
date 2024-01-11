@@ -1,3 +1,4 @@
+@import url('./reset.css');
 @import url('./keyframes.css');
 @import url('./logo.css');
 
@@ -5,7 +6,7 @@
   font-family: Rubik, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  font-size: 20px;
+  font-size: var(--font-resp);
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -16,12 +17,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --font-resp-rng-lg: clamp(14px, 1.2vw, 20px);
+  --font-resp: clamp(18px, 1.2vw, 20px);
+  --font-resp-sm: clamp(16px, 1.2vw, 18px);
+  --font-resp-xs: clamp(14px, 1.2vw, 16px);
+
   --light: ghostwhite;
   --dark: black;
 
   --pink: #C850C0;
   --blue: #4158D0;
-
   --red: #FF2525;
   --purple: #B721FF;
   --green: #08AEEA;
@@ -30,7 +35,6 @@
   --red-gradient: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
   --purple-gradient: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
   --green-gradient: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
-
   --light-gradient: linear-gradient(0deg, ghostwhite 0%, rgb(241, 241, 241) 100%);
   --content-color: ghostwhite; 
   --underline: var(--dark);
@@ -76,7 +80,7 @@ body {
   margin: 0;
 }
 
-h1 {
+h1, h2, h3, h4, h5 {
   font-size: inherit;
   font-weight: inherit;
   margin: 0;
@@ -85,6 +89,10 @@ h1 {
 
 p {
   margin-top: 0;
+}
+
+a {
+  color: var(--dark);
 }
 
 ul {
@@ -96,73 +104,129 @@ main {
   padding: 0;
 }
 
+button { 
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 .rotate {
   animation: rotate 20s linear infinite; 
 }
 
-.pink {
+.pink-background {
   background-image: var(--pink-gradient);
 }
 
-.red {
+.red-background {
   background-image: var(--red-gradient);
 }
 
-.purple {
+.purple-background {
   background-image: var(--purple-gradient);
 }
 
-.green {
+.green-background {
   background-image: var(--green-gradient);
+}
+
+.pink-text{
+  color: var(--pink);
+}
+
+.red-text{
+  color: var(--red);
+}
+
+.purple-text{
+  color: var(--purple);
+}
+
+.green-text{
+  color: var(--green);
+}
+
+.pink-theme {
+  --underline: var(--pink);
+  --dot-gradient: var(--pink);
+}
+
+.purple-theme {
+  --underline: var(--purple);
+  --dot-gradient: var(--purple);
+}
+
+.green-theme {
+  --underline: var(--green);
+  --dot-gradient: var(--green);
+}
+
+.red-theme {
+  --underline: var(--red);
+  --dot-gradient: var(--red);
 }
 
 .dark-theme {
   background-color: var(--dark);
   color: var(--light);
+
+  a {
+    color: var(--light);
+  }
 }
 
+.stack-content {
+  flex-direction: column;
+}
 
-
-/* 
-.logo {
-  font-size: 80px;
-  font-weight: 200;
-  width: auto;
-  position: absolute;
-  border: 3px dashed var(--dark);
-  border-radius: 100%;
-  width: 124px;
-  height: 124px;
+.link {
   display: flex;
-  justify-content: center;
+  flex-direction: row-reverse;
   align-items: center;
-  top: calc(50% - 65px);
-  left: calc(50% - 65px);
+  justify-content: flex-end;
+  gap: 10px;
 
-  span {
-    display: inline-block;
+  .link-icon {
+    width: 40px;
+    height: auto;
 
-    &:first-child {
-      margin-right: -21px;
-      transform: rotate(180deg);
+    img {
+      width: 100%;
+      height: auto;
+
     }
   }
-} */
+}
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(2, 50%);
+  height: 100%;
+  margin: 0;
 
 
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    animation: scale-in 0.5s ease-out;
+
+    &:first-child,
+    &:last-child {
+      background-color: rgb(29, 27, 27);
+    }
+
+    a {
+      color: var(--light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
 
 .nav {
   display: grid;
@@ -186,12 +250,26 @@ main {
   animation: BackgroundPosition 5s ease infinite;
   background-size: 200% 200%;
   text-transform: uppercase;
-  font-size: clamp(15px, 1.2vw, 20px);
+  font-size: var(--font-resp-rng-lg);
+
+  &.content-item {
+    text-align: center;
+
+    button:hover {
+      opacity: 0.5;
+    }
+  }
 
   > * {
     width: calc(100% - 25px);
     height: calc(100% - 25px);
     transition: opacity 0.25s linear;
+
+    &.center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     &.top-right {
       display: flex;
@@ -216,8 +294,8 @@ main {
     color: var(--dark);
     position: relative;
     display: block;
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
+    width: 100%;
+    height: 100%;
     padding: 20px;
     text-decoration: none;
 
@@ -286,6 +364,10 @@ main {
   justify-content: center;
 }
 
+.info-snippet {
+  animation: fade-in 0.5s ease-out;
+}
+
 .dot-grid {
   &::after {
     position: absolute;
@@ -348,13 +430,13 @@ main {
       position: relative;
       
       &:before {
-        height: 99.3%;
-        width: 99.3%;
+        height: 100%;
+        width: 100%;
       }
 
       &:after {
-        height: 99.3%;
-        width: 99.3%;
+        height: 100%;
+        width: 100%;
       }
     }
   }
@@ -366,26 +448,6 @@ main {
   min-height: 100vh;
   background-image: var(--light-gradient);
   color: var(--dark);
-
-  &.about {
-    --underline: var(--pink);
-    --dot-gradient: var(--pink);
-  }
-
-  &.work {
-    --underline: var(--purple);
-    --dot-gradient: var(--purple);
-  }
-
-  &.skills {
-    --underline: var(--green);
-    --dot-gradient: var(--green);
-  }
-
-  &.personal-projects {
-    --underline: var(--red);
-    --dot-gradient: var(--red);
-  }
 }
 
 .container {
@@ -452,6 +514,7 @@ main {
 
 .text-heading {
   font-size: clamp(30px, 3vw, 50px);
+  font-weight: bold;
 }
 
 .text-subheading {
@@ -463,11 +526,12 @@ main {
 }
 
 .font-small {
-  font-size: 18px;
+  font-size: var(--font-resp-sm);
 }
 
 .font-xsmall {
-  font-size: 15px;
+  font-size: var(--font-resp-xs);
+
 }
 
 .close {
@@ -523,7 +587,7 @@ main {
 
 .client-tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, min(100%/3, max(240px, 100%/5))));
+  grid-template-columns: repeat(auto-fit, minmax(0, min(100%/3, max(230px, 100%/5))));
   grid-auto-rows: 1fr;
   align-items: center;
   justify-items: center;

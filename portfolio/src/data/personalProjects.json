@@ -1,0 +1,139 @@
+{
+  "title": "RYAN RUDMAN",
+  "section": "personal projects",
+  "colorTheme": "red-theme",
+  "intro": "Building from scratch, experimenting with different ideas and learning from trial and error is my preferred way of really understanding how things work.",
+  "subIntro": "With todays abundance of ready made products it is easier than ever just to add paint to the house. Sometimes it is more interesting to learn how to create the bricks in order to build the house...",
+  "content": "Here are some of my own projects which I have been busy with recently. Hopefully they will be useful for other people once they are fully stable.",
+  "showcase": {
+    "heading": "RECENT PROJECTS",
+    "projects": [
+      {
+        "name": "KARBON",
+        "title": "Unique JS framework for building user interfaces",
+        "summary": "<p>Karbon is my own take on what a UI framework should look like. It takes inspiration from Elm's functional approach while remaining undogmatic and pragmatic and retaining the flexibilty that JS offers.</p><p> I started builing Karbon as away to understand the virtual dom approach used in React and other popular frameworks. However, I realised that I could go much further than this and try to address some of the issues I disliked about the component approach and try to create something with more separated concerns when it come to the view, state, effects interactions and management.</p><p>The result was Karbon which, although still in optimisation progres, is a fully functional UI framework. In fact this SPA application is built with it.</p>",
+        "usps": ["Single state", "VDOM", "State manager",  "Effects manager", "Subscription api"],
+        "links": [{
+          "url": "https://github.com/RyanR26/karbon",
+          "label": "See project on Github",
+          "img": "/images/logos/github-icon.png"
+        }],
+        "media": [ 
+          {
+            "type": "video",
+            "url": "/images/projects/lbx-hub/signed-out.mp4"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-2.png"
+          },
+          {
+            "type": "video",
+            "url": "/images/projects/lexus-style-selector/style-selector.mp4"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-4.png"
+          }, 
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-5.png"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-6.png"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-7.png"
+          }
+        ],
+        "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"
+      },
+      {
+        "name": "MOVIMENTO",
+        "title": "CSS animations library",
+        "summary": "<p>Animations properties introduced in CSS3 have given us immense power for amazing page animations and transitions, however, being handled directly in the CSS stylesheet became more of a hassle for quick implementation and reuse. Originally built for a commercial project where we needed building blocks to quickly scafflod new componenets with a range of animations. These library allows CSS animations to be quickly implemented via data attributes directly in the HTML.</p>",
+        "usps": ["Declarative code", "HTML augmentation", "CCS3 animations", "SASS", "Fine control vis JS",  "React component"],
+        "links": [{
+          "url": "https://github.com/RyanR26/karbon",
+          "label": "See project on Github",
+          "img": "/images/logos/github-icon.png"
+        }],
+        "media": [ 
+          {
+            "type": "video",
+            "url": "/images/projects/lbx-hub/signed-out.mp4"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-2.png"
+          },
+          {
+            "type": "video",
+            "url": "/images/projects/lexus-style-selector/style-selector.mp4"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-4.png"
+          }, 
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-5.png"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-6.png"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-7.png"
+          }
+        ],
+        "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"
+      },
+      {
+        "name": "PARALLEX",
+        "title": "JS library for parallax scrolling effects",
+        "summary": "<p>Animations properties introduced in CSS3 have given us immense power for amazing page animations and transitions, however, being handled directly in the CSS stylesheet became more of a hassle for quick implementation and reuse. Originally built for a commercial project where we needed building blocks to quickly scafflod new componenets with a range of animations. These library allows CSS animations to be quickly implemented via data attributes directly in the HTML.</p>",
+        "usps": ["Declarative code", "HTML augmentation", "CCS3 animations", "SASS", "Fine control vis JS",  "React component"],
+        "links": [{
+          "url": "https://github.com/RyanR26/karbon",
+          "label": "See project on Github",
+          "img": "/images/logos/github-icon.png"
+        }],
+        "media": [ 
+          {
+            "type": "video",
+            "url": "/images/projects/lbx-hub/signed-out.mp4"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-2.png"
+          },
+          {
+            "type": "video",
+            "url": "/images/projects/lexus-style-selector/style-selector.mp4"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-4.png"
+          }, 
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-5.png"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-6.png"
+          },
+          {
+            "type": "image",
+            "url": "/images/projects/lexus-ai-experience/ai-7.png"
+          }
+        ],
+        "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"
+      }
+    ]
+  }
+}
