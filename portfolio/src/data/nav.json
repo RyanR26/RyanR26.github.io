@@ -1,9 +1,66 @@
 {
   "name": "Ryan Rudman",
   "main": "Front End Developer",
-  "about": "Some details about myself..",
-  "work": "A little about my commerical work experience..",
-  "skills": "What im good at & and how I can help you...",
-  "personal": "What I'm tinkering with in my free time...",
-  "contact": "Get in touch, download my resume..."
+  "heading" : {
+    "title": "Ryan Rudman",
+    "subtitle": "Front End Developer"
+  },
+  "footer": { 
+    "content": ""
+  },
+  "about": {
+    "snippet": "Some details about myself...",
+    "path": "/about",
+    "name": "about",
+    "className": "pink-background"
+  },
+  "work": {
+    "snippet": "A little about my commerical work experience...",
+    "path": "/work",
+    "name": "work",
+    "className": "purple-background"
+  },
+  "skillset": {
+    "snippet": "What im good at & and how I can help you...",
+    "path": "/skillset",
+    "name": "skillset",
+    "className": "green-background"
+  },
+  "personal_projects": {
+    "snippet": "See what I'm tinkering with in my free time...",
+    "path": "/personal-projects",
+    "name": "personal projects",
+    "className": "red-background"
+  },
+  "contact": {
+    "snippet": "Get in touch, download my resume...",
+    "name": "contact",
+    "className": "red-background",
+    "links": [
+      {
+        "label": "email",
+        "type": "mail",
+        "url": "mailto:ryanrudman@yahoo.co.uk",
+        "img": ""
+      },
+      {
+        "label": "cv",
+        "type": "download",
+        "url": "/files/Ryan-Rudman-Resume.pdf",
+        "img": ""
+      },
+      {
+        "label": "github",
+        "type": "external",
+        "url": "https://github.com/RyanR26",
+        "img": ""
+      },
+      {
+        "label": "linkedin",
+        "type": "external",
+        "url": "https://www.linkedin.com/in/ryan-rudman-9a281b8a/",
+        "img": ""
+      }
+    ]
+  }
 }

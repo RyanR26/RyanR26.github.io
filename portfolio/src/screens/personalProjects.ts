@@ -1,7 +1,15 @@
-import * as data from './data/personalProjects.json';
-import { div, span, section, h4, ul, li, a, img} from '../vendor/modules/HTMLElements.js';
-import { ScreenContainerView } from './screenContainer.js';
-import { SectionIntroView } from './sectionIntro.js';
+import * as data from '../data/personalProjects.json';
+import { div, span, section, h4, ul, li, a, img} from '../../vendor/modules/HTMLElements.js';
+import { ScreenContainerView } from '../partials/screenContainer.js';
+import { SectionIntroView } from '../partials/sectionIntro.js';
+
+interface project {  
+  name: string,
+  title: string,
+  summary: string,
+  usps: string[],
+  links: { url: string, label: string, img: string }[]
+}
 
 export const PersonalProjectsView = 
 
@@ -31,13 +39,7 @@ export const PersonalProjectsView =
         e(div, { class: 'project-showcase-container spacer' })
 
           data.showcase.projects.forEach((
-            project: {
-              name: string,
-              title: string,
-              summary: string,
-              usps: string[],
-              links: { url: string, label: string, img: string }[]
-            }) => {
+            project: project) => {
 
               e(div, { class: 'container spacer-sm' })
                 e(div, { class: 'content-section underline' })
@@ -47,7 +49,7 @@ export const PersonalProjectsView =
                   x(div)
                   e(ul, { class: 'tech-list spacer-sm'})
           
-                    project.usps.forEach((usp: string) => {
+                    project.usps.forEach(usp => {
                       e(li, { class: 'tech-name font-small', text: usp }); x(li)
                     })
                   x(ul)

@@ -1,5 +1,5 @@
-import { div, button } from '../vendor/modules/HTMLElements.js';
-import { Delay, Debounce } from '../vendor/modules/time.js';
+import { div, button } from '../../vendor/modules/HTMLElements.js';
+import { Delay, Debounce } from '../../vendor/modules/time.js';
 
 interface props { 
   id: string,
@@ -138,17 +138,21 @@ const CarouselUpdate = (action: Function, options: { id: string }) => {
 
   let carouselEl: Element | null;
 
+  const namedAction = () => {
+    action()
+  }
+
   setTimeout(() => {
     carouselEl = document.getElementById(options.id);
 
     if (carouselEl) {
-      action()
-      window.addEventListener('resize', action)
+      namedAction()
+      window.addEventListener('resize', namedAction)
     }
   }, 100)
 
   return () => {
-    window.removeEventListener('resize', action)
+    window.removeEventListener('resize', namedAction)
   }
 } 
 

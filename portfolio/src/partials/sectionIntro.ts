@@ -1,4 +1,4 @@
-import { section, h2, h3 } from '../vendor/modules/HTMLElements.js';
+import { section, h2, h3 } from '../../vendor/modules/HTMLElements.js';
 
 interface props {
   intro: 'string',

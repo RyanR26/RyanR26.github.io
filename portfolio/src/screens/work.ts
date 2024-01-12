@@ -1,10 +1,17 @@
-import * as data from './data/work.json';
-import { div, section, ul, li, span, h4 } from '../vendor/modules/HTMLElements.js';
-import { ScreenContainerView } from './screenContainer.ts';
-import { SectionIntroView } from './sectionIntro.ts';
-import { LazyImage } from '../vendor/modules/lazyImage.js';
-import { Link, Switch, Route } from '../vendor/modules/Router.js';
-import { ProjectShowcaseView } from './projectShowcase.ts';
+import * as data from '../data/work.json';
+import { div, section, ul, li, span, h4, a } from '../../vendor/modules/HTMLElements.js';
+import { ScreenContainerView } from '../partials/screenContainer.ts';
+import { SectionIntroView } from '../partials/sectionIntro.ts';
+import { LazyImage } from '../../vendor/modules/lazyImage.js';
+import { Link } from '../../vendor/modules/Router.js';
+import { ProjectShowcaseView } from '../partials/projectShowcase.ts';
+
+interface brand { 
+  name: string,
+  url: string, 
+  img: string, 
+  placeholderImg: string 
+}
 
 export const WorkView = 
 
@@ -31,12 +38,7 @@ export const WorkView =
       e(section, { class: 'container spacer'})
         e(ul, { class: 'client-tiles' })
 
-          data.brands.forEach((brand: { 
-            name: string,
-            url: string, 
-            img: string, 
-            placeholderImg: string 
-          }) => {
+          data.brands.forEach((brand: brand) => {
             e(li, { class: 'client-tile' }); 
 
               c(Link(brand.name, brand.url))
@@ -49,14 +51,7 @@ export const WorkView =
               }));
 
               e(span, { class: 'client-name', text: brand.name }); x(span)
-
-              c(Switch(
-                Route(brand.url, () => {
-                  e(div, { class: 'overlay '})
-                    e(div, { text: ' details'}); x(div)
-                  x(div)
-                })
-              ))
+              e(a, { href: brand.url, target: '_blank' }); x(a)
             x(li)
           })
         x(ul)

@@ -1,0 +1,31 @@
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(2, 50%);
+  height: 100%;
+  margin: 0;
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    animation: scale-in 0.5s ease-out;
+
+    &:first-child,
+    &:last-child {
+      background-color: rgb(22 20 20);
+    }
+
+    a {
+      color: var(--light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+}

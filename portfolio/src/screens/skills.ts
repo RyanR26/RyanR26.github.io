@@ -1,7 +1,7 @@
-import * as data from './data/skills.json';
-import { div, section, ul, li } from '../vendor/modules/HTMLElements.js';
-import { ScreenContainerView } from './screenContainer.ts';
-import { SectionIntroView } from './sectionIntro.ts';
+import * as data from '../data/skills.json';
+import { div, section, ul, li } from '../../vendor/modules/HTMLElements.js';
+import { ScreenContainerView } from '../partials/screenContainer.ts';
+import { SectionIntroView } from '../partials/sectionIntro.ts';
 
 export const SkillsView = 
 

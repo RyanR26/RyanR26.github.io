@@ -1,7 +1,7 @@
-import * as data from './data/about.json';
-import { div, section } from '../vendor/modules/HTMLElements.js';
-import { ScreenContainerView } from './screenContainer.js';
-import { SectionIntroView } from './sectionIntro.js';
+import * as data from '../data/about.json';
+import { div, section } from '../../vendor/modules/HTMLElements.js';
+import { ScreenContainerView } from '../partials/screenContainer.js';
+import { SectionIntroView } from '../partials/sectionIntro.js';
 
 export const AboutView = 
 

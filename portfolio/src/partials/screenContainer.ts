@@ -1,4 +1,4 @@
-import { div } from '../vendor/modules/HTMLElements.js';
+import { div } from '../../vendor/modules/HTMLElements.js';
 import { TopBarView } from './topBar.js';
 
 interface props {

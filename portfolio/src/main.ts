@@ -1,10 +1,10 @@
 import './styles/style.css'
 import { Switch, Route, routerState, routerConfig, routerActions, routerSubscriptions } from '../vendor/modules/Router.js';
-import { ClockState, ClockActions, ClockSubscriptions } from './clock.ts';
-import { NavState, NavView, NavActions } from './nav.ts';
-import { main, div } from '../vendor/modules/HTMLElements.js';
+import { ClockState, ClockActions, ClockSubscriptions } from './partials/clock.ts';
+import { NavState, NavView, NavActions } from './screens/nav.ts';
+import { main, div, span } from '../vendor/modules/HTMLElements.js';
 import { Delay } from '../vendor/modules/time.js';
-import { CarouselActions, CarouselState, CarouselSubscriptions } from './carousel.ts';
+import { CarouselActions, CarouselState, CarouselSubscriptions } from './partials/carousel.ts';
 import { IntersectObserver } from '../vendor/modules/subscriptions.js';
 
 declare global {
@@ -46,6 +46,15 @@ const globalActions = (dispatch: dispatch) => ({
         args: [entry.target, entry.isIntersecting && entry.target.classList.contains('playing')]
       }]
     )
+  },
+
+  setViewportSize() {
+    dispatch.msgs(
+      ['state', {
+        path: ['viewportSize'],
+        value: Fx.getViewportSize()
+      }]
+    )
   }
 })
 
@@ -57,6 +66,10 @@ const Fx = {
     } else {
       element.pause()
     }
+  },
+
+  getViewportSize() {
+    return window.innerWidth < 769 ? 'small' : 'large'
   }
 }
 
@@ -71,7 +84,8 @@ const App = {
     ...CarouselState('carouselProject2'),
     ...NavState,
     landingScreenActive: true,
-    routeTransition: null
+    routeTransition: null,
+    viewportSize: Fx.getViewportSize()
   },
 
   actions: [
@@ -84,14 +98,18 @@ const App = {
 
   subscriptions: (state: state, actions: actions) => [
     ...routerSubscriptions(actions.routerActions),
-    ClockSubscriptions('clock', state.landingScreenActive, actions),
+    // ClockSubscriptions('clock', state.landingScreenActive, actions),
     CarouselSubscriptions('carouselProject1', actions, state.router.current),
     CarouselSubscriptions('carouselProject2', actions, state.router.current),
     { 
       name: IntersectObserver,
       action: actions.globalActions.playPauseVideo,
-      options: { target: '.video' },
+      options: { target: '.video', threshold: 0.6 },
       watch: state.router.current
+    },
+    { 
+      name: 'resize',
+      action: actions.globalActions.setViewportSize
     }
   ],
 
@@ -110,7 +128,7 @@ const App = {
           beforeLeave: [ 
             (state: state) => 
               ['control', { 
-                if: state.router.next !== '/contact',
+                if: state.viewportSize === 'large',
                 false: ['', 'skip', 2]
               }],
             ['state', { 
@@ -120,6 +138,11 @@ const App = {
             Delay(1500) 
           ],
           afterEnter: [ 
+            (state: state) => 
+              ['control', { 
+                if: state.viewportSize === 'large',
+                false: ['', 'skip', 1]
+              }],
             Delay(10),
             ['state', { 
               path: [['routeTransition', 'landingScreenActive']], 
@@ -144,8 +167,7 @@ const App = {
     }
 
     const error = (): void => {
-      e(div, { text: 'An error has occurred, please refresh the page and try again.'})
-      x(div)
+      e(div, { text: 'An error has occurred, please refresh the page and try again.'}); x(div)
     }
 
     e(main); 
@@ -155,7 +177,7 @@ const App = {
         }),
         Route('/about', () => {
           lazy(
-            () => import('./about.ts'), 
+            () => import('./screens/about.ts'), 
             (m: { AboutView: Function }) => c({ AboutView: m.AboutView }, { props: { ...state }}),
             () => mainNav(),
             () => error()
@@ -163,15 +185,15 @@ const App = {
         }),
         Route('/work', () => {
           lazy(
-            () => import('./work.ts'), 
+            () => import('./screens/work.ts'), 
             (m: { WorkView: Function }) => c({ WorkView: m.WorkView }, { props: { ...state }}),
             () => mainNav(),
             () => error()
           )
         }),
-        Route('/skills', () => {
+        Route('/skillset', () => {
           lazy(
-            () => import('./skills.ts'), 
+            () => import('./screens/skills.ts'), 
             (m: { SkillsView: Function }) => c({ SkillsView: m.SkillsView }, { props: { ...state }}),
             () => mainNav(),
             () => error()
@@ -179,7 +201,7 @@ const App = {
         }),
         Route('/personal-projects', () => {
           lazy(
-            () => import('./personalProjects.ts'), 
+            () => import('./screens/personalProjects.ts'), 
             (m: { PersonalProjectsView: Function }) => c({ PersonalProjectsView: m.PersonalProjectsView }, { props: { ...state }}),
             () => mainNav(),
             () => error()

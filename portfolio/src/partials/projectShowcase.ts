@@ -1,6 +1,6 @@
 
-import { div, ul, li, span, video, source } from '../vendor/modules/HTMLElements.js';
-import { LazyImage } from '../vendor/modules/lazyImage.js';
+import { div, ul, li, span, video, source } from '../../vendor/modules/HTMLElements.js';
+import { LazyImage } from '../../vendor/modules/lazyImage.js';
 import { Carousel } from './carousel.ts';
 
 interface props {

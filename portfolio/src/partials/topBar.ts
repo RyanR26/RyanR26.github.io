@@ -1,5 +1,5 @@
-import { Link } from '../vendor/modules/Router.js';
-import { div, section, span, h1 } from '../vendor/modules/HTMLElements.js';
+import { Link } from '../../vendor/modules/Router.js';
+import { div, section, span, h1 } from '../../vendor/modules/HTMLElements.js';
 
 interface props {
   title: 'string',

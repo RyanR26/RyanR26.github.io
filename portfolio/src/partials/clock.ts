@@ -1,6 +1,6 @@
-import { div } from '../vendor/modules/HTMLElements.js';
-import { LocalTime } from '../vendor/modules/time.js';
-import { Interval } from '../vendor/modules/subscriptions.js';
+import { div } from '../../vendor/modules/HTMLElements.js';
+import { LocalTime } from '../../vendor/modules/time.js';
+import { Interval } from '../../vendor/modules/subscriptions.js';
 
 interface props {
   time: Date,
@@ -20,7 +20,6 @@ export const ClockActions = (id: string='clock'): object => ({
   [id]: (dispatch: { msgs: Function }): object => ({
 
     tick() {
-      console.log('tick')
       dispatch.msgs(
         LocalTime(),
         (time: Date) => 

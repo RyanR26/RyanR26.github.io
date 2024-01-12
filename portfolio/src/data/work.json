@@ -8,91 +8,91 @@
   "brands": [
     {
       "name": "Lexus",
-      "url": "/work/lexus",
+      "url": "https:/www.lexus.eu",
       "img": "/images/logos/Lexus.png",
       "placeholderImg": "/images/logos/Lexus-thumb.png"
     },
     {
       "name": "Toyota",
-      "url": "/toyota",
+      "url": "https:/www.toyota.eu",
       "img": "/images/logos/Toyota.png",
       "placeholderImg": "/images/logos/Toyota-thumb.png"      
     },
     {
       "name": "Canaccord Genuity",
-      "url": "/cannacord",
+      "url": "https://www.canaccordgenuity.com/",
       "img": "/images/logos/CG.png",
       "placeholderImg": "/images/logos/CG-thumb.png"
     },
     {
       "name": "Sunlife",
-      "url": "/sunlife",
+      "url": "https://www.sunlife.co.uk/",
       "img": "/images/logos/Sunlife.png",
       "placeholderImg": "/images/logos/Sunlife-thumb.png"
     },
     {
       "name": "Forevermark",
-      "url": "/forevermark",
+      "url": "https://www.forevermark.com/",
       "img": "/images/logos/Forevermark.png",
       "placeholderImg": "/images/logos/Forevermark-thumb.png"
     },
     {
       "name": "Expedia",
-      "url": "/expedia",
+      "url": "https://www.expedia.com/",
       "img": "/images/logos/Expedia.png",
       "placeholderImg": "/images/logos/Expedia-thumb.png"
     },
     {
       "name": "Unilever",
-      "url": "/unilever",
+      "url": "https://www.unilever.co.uk/",
       "img": "/images/logos/Unilever.png",
       "placeholderImg": "/images/logos/Unilever-thumb.png"
     },
     {
       "name": "Land Rover",
-      "url": "/landrover",
+      "url": "https://www.landrover.co.uk/index.html",
       "img": "/images/logos/LandRover.png",
       "placeholderImg": "/images/logos/LandRover-thumb.png"
     },
     {
       "name": "NEFF",
-      "url": "/neff",
+      "url": "https://www.neff-home.com/uk/",
       "img": "/images/logos/NEFF.png",
       "placeholderImg": "/images/logos/NEFF-thumb.png"
     },
     {
       "name": "Trek",
-      "url": "/trek",
+      "url": "https://www.trekbikes.com/us/en_US/",
       "img": "/images/logos/Trek.png",
       "placeholderImg": "/images/logos/Trek-thumb.png"
     },
     {
       "name": "Wacoal",
-      "url": "/wacoal",
+      "url": "https://www.wacoallingerie.com/uk/en/",
       "img": "/images/logos/Wacoal.png",
       "placeholderImg": "/images/logos/Wacoal-thumb.png"
     },
     {
       "name": "Haglofs",
-      "url": "/haglofs",
+      "url": "https://www.haglofs.com/en",
       "img": "/images/logos/Haglofs.png",
       "placeholderImg": "/images/logos/Haglofs-thumb.png"
     },
     {
       "name": "Asics",
-      "url": "/asics",
+      "url": "https://www.asics.com/gb/en-gb/",
       "img": "/images/logos/Asics.png",
       "placeholderImg": "/images/logos/Asics-thumb.png"
     },
     {
       "name": "Thomas Cook",
-      "url": "/thomascook",
+      "url": "https://www.thomascook.com/",
       "img": "/images/logos/ThomasCook.png",
       "placeholderImg": "/images/logos/ThomasCook-thumb.png"
     },
     {
       "name": "Essential Travel",
-      "url": "/essentialtravel",
+      "url": "",
       "img": "/images/logos/EssentialTravel.jpeg",
       "placeholderImg": "/images/logos/EssentialTravel-thumb.jpeg"
     }
