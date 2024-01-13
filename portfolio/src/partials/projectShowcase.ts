@@ -20,24 +20,29 @@ export const ProjectShowcaseView =
 (props: props): Function => 
 (e: Function, x: Function, {component: c}: {component: Function}): void => {
 
-  e(div, { class: 'project-showcase' })
+  e(div, { class: `project-showcase ${props.index % 2 == 0 ? 'dark-theme' : ''}` })
     e(div, { class: 'container-full spacer-zero' })
 
       c(Carousel(
         `carouselProject${props.index + 1}`, 
         props.project.media, 
 
-        (media: { type: string, url: string }, 
+        (media: { type: string, url: string, poster?: string, background?: string }, 
         index: number,
         carouselProps: { activeIndex: number } 
         ) => {
 
-          e(div, { class: 'project-media-container'}); 
+          e(div, { class: 'project-media-container ' })
+
+            if (media.background) {
+              e(div, { class: 'blurred-image-background', style: { 'background-image': `url(${media.background})` }}); x(div)
+            }
 
             if (media.type === 'image') {
               c(LazyImage({
                 url: media.url, 
                 placeholderUrl: props.project.placeholderImg,  
+                classes: media.background ? 'image-contain' : ''
               }));
             }
             else if (media.type === 'video') {
@@ -46,7 +51,9 @@ export const ProjectShowcaseView =
                   controls: true, 
                   autoplay: false,
                   muted: true,
-                  playsInline: true
+                  playsInline: true,
+                  loop: true,
+                  ...( media.poster ? { poster: media.poster } : {})
                 }, 
                 { key: 'videoId' + index })
                 e(source, { src: media.url, type: 'video/mp4'})

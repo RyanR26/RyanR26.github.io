@@ -1,4 +1,4 @@
-import { div, button } from '../../vendor/modules/HTMLElements.js';
+import { div, button, span } from '../../vendor/modules/HTMLElements.js';
 import { Delay, Debounce } from '../../vendor/modules/time.js';
 
 interface props { 
@@ -10,6 +10,7 @@ interface props {
   itemWidth: number | null,
   config: { 
     controls: boolean,
+    pagination: boolean,
     gap: number
   }
 }
@@ -162,7 +163,8 @@ export const CarouselSubscriptions = (id: string, actions: actions, watch: strin
   watch,
   options: {
     id
-  }
+  },
+  key: id
 })
 
 export const CarouselView = 
@@ -176,7 +178,7 @@ export const CarouselView =
       e(button, { 
         class: 'carousel-button prev',
         text: 'prev', 
-        onclick: [actions[props.id].next, 'prev', props.items.length, props.config.gap ]})
+        onclick: [actions[props.id].next, 'prev', props.items.length, props.config.gap]})
       x(button)
       e(button, { 
         class: 'carousel-button next',
@@ -200,6 +202,14 @@ export const CarouselView =
         });
 
       x(div)
+
+      if (props.config.pagination) {
+        e(div, { class: 'carousel-pagination' })
+          e(span, { text: props.activeIndex + 1 }); x(span)
+          e(span, { text: ' / ' }); x(div)
+          e(span, { text: props.items.length }); x(span)
+        x(div)
+      }
     x(div)
   x(div)
 }
@@ -217,7 +227,7 @@ export const Carousel = (
   { CarouselView }, 
   { props: {
       id,
-      config: config || { controls : true, gap: 0 },
+      config: config || { controls : true, pagination: true, gap: 0 },
       items,
       itemView: (item: Function, index: number, props: object) => {
         itemView(item, index, props)

@@ -56,9 +56,11 @@ export const WorkView =
           })
         x(ul)
       x(section)
-      e(section, { class: 'dark-theme' })
-        e(div, { class: 'container spacer-lg'})
-          e(h4, { class: 'content-section underline', text: data.showcase.heading }); x(h4)
+      e(section)
+        e(div, { class: 'dark-theme' })
+          e(div, { class: 'container no-padding-bottom'})
+            e(h4, { class: 'content-section underline', text: data.showcase.heading }); x(h4)
+          x(div)
         x(div)
         e(div, { class: 'project-showcase-container' })
 
@@ -66,7 +68,7 @@ export const WorkView =
             project: object, 
             index: number) => {
 
-              c({  ProjectShowcaseView }, { 
+              c({ ProjectShowcaseView }, { 
                 props: {
                   project,
                   index

@@ -104,20 +104,21 @@
       "brand": "LEXUS",
       "name": "AI Experience",
       "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a arcu nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse vitae ante a nibh venenatis ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-      "techList": ["React.js", "SASS", "Webpack",  "Adobe Experience Manager", "Stable Diffusion AI Engine"],
+      "techList": ["React.js", "SASS", "Webpack",  "Node", "Express", "Adobe Experience Manager", "Stable Diffusion AI Engine"],
       "media": [ 
+
         {
-          "type": "video",
-          "url": "/images/projects/lbx-hub/signed-out.mp4"
-        },
+          "type": "image",
+          "url": "/images/projects/lexus-ai-experience/ai-1.png"
+        }, 
         {
           "type": "image",
           "url": "/images/projects/lexus-ai-experience/ai-2.png"
         },
         {
-          "type": "video",
-          "url": "/images/projects/lexus-style-selector/style-selector.mp4"
-        },
+          "type": "image",
+          "url": "/images/projects/lexus-ai-experience/ai-3.png"
+        }, 
         {
           "type": "image",
           "url": "/images/projects/lexus-ai-experience/ai-4.png"
@@ -133,27 +134,48 @@
         {
           "type": "image",
           "url": "/images/projects/lexus-ai-experience/ai-7.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-ai-experience/ai-8.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-ai-experience/ai-9.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-ai-experience/ai-cover.png",
+          "background": "/images/projects/lexus-ai-experience/ai-cover.png"
+        }, 
+        {
+          "type": "video",
+          "url": "/images/projects/lexus-ai-experience/ai-video.mp4",
+          "poster": ""
         }
       ],
       "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"
     },
     {
-      "brand": "TOYOTA",
-      "name": "New Model Release Marketing components",
+      "brand": "LEXUS",
+      "name": "Experience Configurator",
       "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a arcu nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse vitae ante a nibh venenatis ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-      "techList": ["React.js", "SASS",  "Adobe Experience Manager", "Stable Diffusion AI"],
+      "techList": ["React.js", "SASS",  "WebGL"],
       "media": [
         {
-          "type": "image",
-          "url": "/images/projects/lexus-experience-configurator/exp-config-1.png"
+          "type": "video",
+          "url": "/images/projects/lexus-experience-configurator/exp-config-vid-1.mp4",
+          "poster": "/images/projects/lexus-experience-configurator/exp-config-1.png"
         },
         {
-          "type": "image",
-          "url": "/images/projects/lexus-experience-configurator/exp-config-2.png"
+          "type": "video",
+          "url": "/images/projects/lexus-experience-configurator/exp-config-vid-2.mp4",
+          "poster": ""
         },
         {
-          "type": "image",
-          "url": "/images/projects/lexus-experience-configurator/exp-config-3.png"
+          "type": "video",
+          "url": "/images/projects/lexus-experience-configurator/exp-config-vid-3.mp4",
+          "poster": ""
         },
         {
           "type": "image",
@@ -166,6 +188,45 @@
         {
           "type": "image",
           "url": "/images/projects/lexus-experience-configurator/exp-config-6.png"
+        }
+      ],
+      "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"
+    },
+    {
+      "brand": "TOYOTA/LEXUS",
+      "name": "Presales Marketing components",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a arcu nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse vitae ante a nibh venenatis ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+      "techList": ["React.js", "SASS",  "Adobe Experience Manager", "Stable Diffusion AI"],
+      "media": [
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-presales/presales-hero-lexus.jpg",
+          "background": "/images/projects/lexus-presales/presales-hero-lexus-background.jpg"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-presales/presales-video-scroll-d.png",
+          "background": "/images/projects/lexus-presales/presales-video-scroll-d.png"
+
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-presales/presales-article.png",
+          "background": "/images/projects/lexus-presales/presales-article.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-presales/presales-feature.png",
+          "background": "/images/projects/lexus-presales/presales-feature.png"
+        },
+        {
+          "type": "image",
+          "url": "/images/projects/lexus-presales/presales-editorial.png",
+          "background": "/images/projects/lexus-presales/presales-editorial.png"
+        },
+        {
+          "type": "video",
+          "url": "/images/projects/lexus-presales/presales-motion-video.mp4"
         }
       ],
       "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"

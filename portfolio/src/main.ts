@@ -1,9 +1,9 @@
 import './styles/style.css'
 import { Switch, Route, routerState, routerConfig, routerActions, routerSubscriptions } from '../vendor/modules/Router.js';
+import { routerConfigObj } from './routerConfig.ts';
 import { ClockState, ClockActions, ClockSubscriptions } from './partials/clock.ts';
 import { NavState, NavView, NavActions } from './screens/nav.ts';
-import { main, div, span } from '../vendor/modules/HTMLElements.js';
-import { Delay } from '../vendor/modules/time.js';
+import { main, div } from '../vendor/modules/HTMLElements.js';
 import { CarouselActions, CarouselState, CarouselSubscriptions } from './partials/carousel.ts';
 import { IntersectObserver } from '../vendor/modules/subscriptions.js';
 
@@ -55,6 +55,23 @@ const globalActions = (dispatch: dispatch) => ({
         value: Fx.getViewportSize()
       }]
     )
+  },
+
+  triggerSubsciptions() {
+    dispatch.msgs(
+      ['state', {
+        path: ['router', 'current'],
+        value: (prevValue: string) => prevValue + '#' 
+      }, {
+        preventRender: true
+      }],
+      ['state', {
+        path: ['router', 'current'],
+        value: (prevValue: string) => prevValue.replace('#', '')
+      }, {
+        preventRender: true
+      }]
+    )
   }
 })
 
@@ -82,10 +99,12 @@ const App = {
     ...ClockState('clock'),
     ...CarouselState('carouselProject1'),
     ...CarouselState('carouselProject2'),
+    ...CarouselState('carouselProject3'),
     ...NavState,
     landingScreenActive: true,
     routeTransition: null,
-    viewportSize: Fx.getViewportSize()
+    viewportSize: Fx.getViewportSize(),
+    
   },
 
   actions: [
@@ -93,7 +112,8 @@ const App = {
     { routerActions },
     ClockActions('clock'),
     CarouselActions('carouselProject1'),
-    CarouselActions('carouselProject2')
+    CarouselActions('carouselProject2'),
+    CarouselActions('carouselProject3')
   ],
 
   subscriptions: (state: state, actions: actions) => [
@@ -101,15 +121,20 @@ const App = {
     // ClockSubscriptions('clock', state.landingScreenActive, actions),
     CarouselSubscriptions('carouselProject1', actions, state.router.current),
     CarouselSubscriptions('carouselProject2', actions, state.router.current),
+    CarouselSubscriptions('carouselProject3', actions, state.router.current),
     { 
       name: IntersectObserver,
       action: actions.globalActions.playPauseVideo,
-      options: { target: '.video', threshold: 0.6 },
+      options: { target: '.video', threshold: 0.8 },
       watch: state.router.current
     },
     { 
       name: 'resize',
       action: actions.globalActions.setViewportSize
+    },
+    { 
+      name: 'Lazy_Component_Rendered',
+      action: actions.globalActions.triggerSubsciptions
     }
   ],
 
@@ -120,38 +145,7 @@ const App = {
   },
 
   init: () => {
-
-    routerConfig({
-      hooks: [
-        { 
-          routes: ['/'], 
-          beforeLeave: [ 
-            (state: state) => 
-              ['control', { 
-                if: state.viewportSize === 'large',
-                false: ['', 'skip', 2]
-              }],
-            ['state', { 
-              path: [['routeTransition', 'landingScreenActive']], 
-              value: ['in', false]
-            }],
-            Delay(1500) 
-          ],
-          afterEnter: [ 
-            (state: state) => 
-              ['control', { 
-                if: state.viewportSize === 'large',
-                false: ['', 'skip', 1]
-              }],
-            Delay(10),
-            ['state', { 
-              path: [['routeTransition', 'landingScreenActive']], 
-              value: ['out', true]
-            }]
-          ]
-        }
-      ]
-    })
+    routerConfig(routerConfigObj)
   },
 
   view: 

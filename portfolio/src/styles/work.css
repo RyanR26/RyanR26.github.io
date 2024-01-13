@@ -70,17 +70,29 @@
   margin: 0;
 
   .tech-name {
-    background-color: var(--light);
-    color: var(--dark);
+    background-color: var(--dark);
+    color: var(--light);
     padding: 0 10px;
     border-radius: 10px;
   }
 }
 
 .project-showcase {
+  padding-top: 80px;
+
   .project-media-container {
+    position: relative;
+    overflow: hidden;
+
     img, video {
       aspect-ratio: 16/9;
     }
+  }
+}
+
+.dark-theme {
+  .tech-name {
+    background-color: var(--light);
+    color: var(--dark);
   }
 }

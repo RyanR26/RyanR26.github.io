@@ -57,7 +57,7 @@ export const PersonalProjectsView =
                   e(ul, { class: 'spacer-sm'})
           
                     project.links.forEach(link => {
-                      e(li, { class: 'tech-name font-small' }); 
+                      e(li, { class: 'font-small' }); 
                         e(a, { class: 'link', text: link.label, href: link.url, target: '_blank' }); 
                           e(span, { class: 'link-icon' })
                             e(img, { src: link.img, alt: 'logo '})

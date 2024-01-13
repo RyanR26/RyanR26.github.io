@@ -1,0 +1,60 @@
+.pink-background {
+  background-image: var(--pink-gradient);
+}
+
+.red-background {
+  background-image: var(--red-gradient);
+}
+
+.purple-background {
+  background-image: var(--purple-gradient);
+}
+
+.green-background {
+  background-image: var(--green-gradient);
+}
+
+.pink-text{
+  color: var(--pink);
+}
+
+.red-text{
+  color: var(--red);
+}
+
+.purple-text{
+  color: var(--purple);
+}
+
+.green-text{
+  color: var(--green);
+}
+
+.pink-theme {
+  --underline: var(--pink);
+  --dot-gradient: var(--pink);
+}
+
+.purple-theme {
+  --underline: var(--purple);
+  --dot-gradient: var(--purple);
+}
+
+.green-theme {
+  --underline: var(--green);
+  --dot-gradient: var(--green);
+}
+
+.red-theme {
+  --underline: var(--red);
+  --dot-gradient: var(--red);
+}
+
+.dark-theme {
+  background-color: var(--dark);
+  color: var(--light);
+
+  a {
+    color: var(--light);
+  }
+}

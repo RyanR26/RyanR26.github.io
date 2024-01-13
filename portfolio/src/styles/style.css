@@ -6,6 +6,7 @@
 @import url('./topbar.css');
 @import url('./carousel.css');
 @import url('./work.css');
+@import url('./theme.css');
 
 :root {
   font-family: Rubik, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -14,8 +15,8 @@
   font-size: var(--font-resp);
   letter-spacing: var(--letter-spacing);
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  /* color-scheme: light dark; */
+  color: --dark;
   background-color: black;
 
   font-synthesis: none;
@@ -90,67 +91,6 @@ button {
   animation: rotate 20s linear infinite; 
 }
 
-.pink-background {
-  background-image: var(--pink-gradient);
-}
-
-.red-background {
-  background-image: var(--red-gradient);
-}
-
-.purple-background {
-  background-image: var(--purple-gradient);
-}
-
-.green-background {
-  background-image: var(--green-gradient);
-}
-
-.pink-text{
-  color: var(--pink);
-}
-
-.red-text{
-  color: var(--red);
-}
-
-.purple-text{
-  color: var(--purple);
-}
-
-.green-text{
-  color: var(--green);
-}
-
-.pink-theme {
-  --underline: var(--pink);
-  --dot-gradient: var(--pink);
-}
-
-.purple-theme {
-  --underline: var(--purple);
-  --dot-gradient: var(--purple);
-}
-
-.green-theme {
-  --underline: var(--green);
-  --dot-gradient: var(--green);
-}
-
-.red-theme {
-  --underline: var(--red);
-  --dot-gradient: var(--red);
-}
-
-.dark-theme {
-  background-color: var(--dark);
-  color: var(--light);
-
-  a {
-    color: var(--light);
-  }
-}
-
 .stack-content {
   flex-direction: column;
 }
@@ -169,7 +109,6 @@ button {
     img {
       width: 100%;
       height: auto;
-
     }
   }
 }
@@ -216,6 +155,27 @@ button {
   border-bottom: 1px solid var(--underline);
 }
 
+.blurred-image-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-filter: blur(36px);
+  -o-filter: blur(36px);
+  filter: blur(36px);
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.image-contain {
+  object-fit: contain !important;
+}
+
 .underline-thick {
   border-bottom: 2px solid var(--underline);
 }
@@ -226,6 +186,10 @@ button {
   animation: fade-in 0.5s ease-out;
   animation-delay: 0.25s;
   animation-fill-mode: forwards;
+}
+
+.no-padding-bottom {
+  padding-bottom: 0;
 }
 
 .text-heading {
