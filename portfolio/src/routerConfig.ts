@@ -31,8 +31,8 @@ export const routerConfigObj = {
           }],
         Delay(10),
         ['state', { 
-          path: [['routeTransition', 'landingScreenActive']], 
-          value: ['out', true]
+          path: [['routeTransition', 'landingScreenActive', 'contactShow']], 
+          value: ['out', true, false]
         }]
       ]
     }

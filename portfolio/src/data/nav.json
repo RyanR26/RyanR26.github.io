@@ -6,7 +6,7 @@
     "subtitle": "Front End Developer"
   },
   "footer": { 
-    "content": ""
+    "content": "Built with Karbon and Typescript"
   },
   "about": {
     "snippet": "Some details about myself...",
@@ -46,7 +46,7 @@
       {
         "label": "cv",
         "type": "download",
-        "url": "/files/Ryan-Rudman-Resume.pdf",
+        "url": "/files/Resume-Ryan-Rudman.pdf",
         "img": ""
       },
       {

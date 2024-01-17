@@ -13,8 +13,9 @@ export const TopBarView =
 
   e(section, { class: 'top-bar dark-theme' })
     e(div, { class: 'content-section container top-bar-content-container' })
-      e(h1, { class: 'heading text-subheading dot-grid', text: props.title }); 
-        e(span, { class: 'text-subheading font-serif', text: ' - ' + props.section }); x(span)
+      e(h1, { class: 'heading  dot-grid' });
+        e(span, { text: props.title }); x(span)
+        e(span, { class: 'font-serif', text: props.section }); x(span)
       x(h1)
       e(div, { class: 'close' })
         c(Link('', '/'))

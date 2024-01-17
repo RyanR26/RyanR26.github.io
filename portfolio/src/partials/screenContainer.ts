@@ -1,11 +1,13 @@
 import { div } from '../../vendor/modules/HTMLElements.js';
 import { TopBarView } from './topBar.js';
+import { ScrollToTopButton } from '../partials/scrollToTopButton.ts';
 
 interface props {
   title: string,
   section: string,
   colorTheme: string,
-  children: Function
+  children: Function,
+  scrollPosition?: number
 }
 
 export const ScreenContainerView = 
@@ -21,6 +23,10 @@ export const ScreenContainerView =
     }})
 
     props.children()
+
+    if (props.scrollPosition) {
+      c(ScrollToTopButton(props.scrollPosition))
+    }
 
   x(div)
 }

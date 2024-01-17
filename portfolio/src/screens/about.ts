@@ -3,15 +3,20 @@ import { div, section } from '../../vendor/modules/HTMLElements.js';
 import { ScreenContainerView } from '../partials/screenContainer.js';
 import { SectionIntroView } from '../partials/sectionIntro.js';
 
+interface props {
+  scrollPosition: number
+}
+
 export const AboutView = 
 
-(): Function => 
+(props: props): Function => 
 (e: Function, x: Function, {component: c}: {component: Function}): void => {
 
   c({ ScreenContainerView }, { props: {
     title: data.title,
     section: data.section,
     colorTheme: data.colorTheme,
+    scrollPosition: props.scrollPosition,
     children: () => {
 
       c({ SectionIntroView }, {
@@ -21,9 +26,11 @@ export const AboutView =
       }})
 
       e(section, { class: 'container'})
-        e(div, { class: 'content-section text-container' }); 
-          e(div, { innerHTML: data.professionalContent }); x(div)
-          e(div, { innerHTML: data.personalContent }); x(div)
+        e(div, { class: 'content-section text-container underline' }); 
+          e(div, { class: 'three-quarter-width', innerHTML: data.professionalContent }); x(div)
+        x(div)
+        e(div, { class: 'content-section text-container' });
+          e(div, { class: 'font-xsmall font-serif', innerHTML: data.personalContent }); x(div)
         x(div)
       x(section)
     }

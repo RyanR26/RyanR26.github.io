@@ -49,6 +49,10 @@
   &.content-item {
     text-align: center;
 
+    button {
+      color: var(--light);
+    }
+
     button, a {
       &:hover {
         opacity: 0.5;

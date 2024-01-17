@@ -1014,7 +1014,7 @@ var karbon = (function (exports) {
   						lazyCache[cacheKey] = [lazyComponent, module];
   						runTime.forceReRender(creatingHydrationLayer);
   						if (isBrowser() && !creatingHydrationLayer) {
-  							window.dispatchEvent(new CustomEvent('Lazy_Component_Rendered', { detail: { key: cacheKey } }));
+  							window.dispatchEvent(new CustomEvent('Lazy_View_Rendered', { detail: { key: cacheKey } }));
   						}
   					}, time || 0);
   				}).catch(function (error) {
@@ -1022,7 +1022,7 @@ var karbon = (function (exports) {
   					lazyCache[cacheKey] = 'error';
   					runTime.forceReRender(creatingHydrationLayer);
   					if (isBrowser() && !creatingHydrationLayer) {
-  						window.dispatchEvent(new CustomEvent('Lazy_Component_Error', { detail: { key: cacheKey } }));
+  						window.dispatchEvent(new CustomEvent('Lazy_View_Error', { detail: { key: cacheKey } }));
   					}
   				});
   			}
@@ -1405,12 +1405,12 @@ var karbon = (function (exports) {
 
   		case 'class':
   			{
-  				node.removeAttribute(prop);
   				if (isString(value) && isNotEmpty(value)) {
   					node.className = value;
   				} else if (isArray(value) && value.length > 0) {
   					var _node$classList;
 
+  					node.removeAttribute(prop);
   					(_node$classList = node.classList).add.apply(_node$classList, toConsumableArray(value.filter(Boolean))); //filter out all empty strings
   				}
   				break;
@@ -1431,6 +1431,20 @@ var karbon = (function (exports) {
   					node.removeAttribute(prop);
   				}
   				break;
+
+  				// const keys = Object.keys(value);
+  				// let hasStyles = false;
+  				// for (let i = 0; i < keys.length; i++) {
+  				// 	const key = keys[i];
+  				// 	if (isDefined(value[key])) {
+  				//     node.style[key] = value[key];
+  				//     hasStyles = true;
+  				// 	}
+  				// }
+  				// if (!hasStyles) {
+  				//   node.removeAttribute(prop);
+  				// }
+  				// break;
   			}
   		case 'text':
   			if (node.hasChildNodes()) {
@@ -2356,7 +2370,6 @@ var karbon = (function (exports) {
           if (sub.when || isUndefined(sub.when) && !sub.watch || !!sub.watch && !cache[sub.key]) {
 
             if (isUndefined(cache[sub.key])) {
-              console.log('unmount 1');
               subscription.setCache(sub.key, {
                 when: sub.when,
                 watch: sub.watch,
@@ -2367,10 +2380,6 @@ var karbon = (function (exports) {
 
             var cachedSub = cache[sub.key];
             if (cachedSub) {
-              // if (isFunction(cachedSub.unmount)) {
-              //   console.log('unmount 2')
-              //   cachedSub.unmount();
-              // }
               if (sub.when === false) {
                 if (isFunction(cachedSub.unmount)) {
                   cachedSub.unmount();

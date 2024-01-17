@@ -1,17 +1,22 @@
 import * as data from '../data/skills.json';
-import { div, section, ul, li } from '../../vendor/modules/HTMLElements.js';
+import { div, section, h4, ul, li } from '../../vendor/modules/HTMLElements.js';
 import { ScreenContainerView } from '../partials/screenContainer.ts';
 import { SectionIntroView } from '../partials/sectionIntro.ts';
 
+interface props {
+  scrollPosition: number
+}
+
 export const SkillsView = 
 
-(): Function => 
+(props: props): Function => 
 (e: Function, x: Function, {component: c}: {component: Function}): void => {
 
   c({ ScreenContainerView }, { props: {
     title: data.title,
     section: data.section,
     colorTheme: data.colorTheme,
+    scrollPosition: props.scrollPosition,
     children: () => {
   
       c({ SectionIntroView }, {
@@ -20,36 +25,38 @@ export const SkillsView =
           subIntro: data.subIntro
       }})
       
-      e(section, { class: 'container'})
-        e(div, { class: 'content-section underline', text: data.rolesIntro }); x(div)
+      e(section, { class: 'container' })
+        e(div, { class: 'content-section'  })
+          e(div, { class: 'three-quarter-width', text: data.rolesIntro }); x(div)
+        x(div)
       x(section)
-      e(section, { class: 'container'})
-        e(div, { class: 'content-section text-container underline' }); 
-          e(ul, { class: 'skills-list' })
+      e(section, { class: 'dark-theme'})
+        e(div, { class: 'container intro-animation intro-animation-fade'})
+          e(h4, { class: 'content-section underline', text: 'GENERAL EXPERTISE' }); x(h4)
+          e(div, { class: 'content-section text-container' }); 
+            e(ul, { class: 'skills-list' })
 
-            data.roles.forEach((role: string) => {
-              e(li, { text: role })
-              x(li)
+              data.roles.forEach((role: string) => {
+                e(li, { text: role }); x(li)
+              })
+
+            x(ul)
+          x(div)
+        x(div)
+      x(section)
+      e(section, { class: 'container intro-animation intro-animation-fade'})
+        e(h4, { class: 'content-section underline', text: 'TECHNICAL EXPERTISE' }); x(h4)
+        e(div, { class: 'content-section text-container' })
+          e(ul, { class: 'skills-list technologies-list' })
+
+            data.technologies.forEach((technology: string) => {
+              e(li, { text: technology }); x(li)
             })
 
           x(ul)
         x(div)
+        e(div, { class: 'content-section font-xsmall font-serif', text: data.technologiesIntro }); x(div)
       x(section)
-      e(section, { class: 'container'})
-        e(div, { class: 'content-section underline', text: data.technologiesIntro }); x(div)
-      x(section)
-      e(section, { class: 'container'})
-      e(div, { class: 'content-section text-container' }); 
-        e(ul, { class: 'skills-list technologies-list' })
-
-          data.technologies.forEach((technology: string) => {
-            e(li, { text: technology })
-            x(li)
-          })
-
-        x(ul)
-      x(div)
-    x(section)
     }
   }})
 }

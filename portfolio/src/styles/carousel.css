@@ -55,8 +55,12 @@
     }
 
     &.prev {
-      left: -25px;
+      left: -54px;
       right: auto;
+
+      @media (min-width: 569px) {
+        left: -25px;
+      }
 
       &::after {
         border-top: none;
@@ -70,8 +74,12 @@
       }
     }
     &.next {
-      right: -25px;
+      right: -54px;
       left: auto;
+
+      @media (min-width: 569px) {
+        right: -25px;
+      }
 
       &::after {
         border-bottom: none;

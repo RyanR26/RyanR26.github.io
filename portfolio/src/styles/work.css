@@ -1,22 +1,10 @@
 .client-tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, min(100%/3, max(230px, 100%/5))));
+  grid-template-columns: repeat(auto-fit, minmax(0, min(100%/3, max(192px, 100%/6))));
   grid-auto-rows: 1fr;
   align-items: center;
   justify-items: center;
   justify-content: center;
-
-  &:hover {
-    .client-tile {
-      opacity: 0.5;
-    }
-  }
-
-  .client-tile {
-    &:hover {
-      opacity: 1;
-    }
-  }
 }
 
 .client-tile {
@@ -28,7 +16,14 @@
   position: relative;
   justify-content: center;
   min-height: clamp(110px, 5vw, 185px);
-  transition: opacity 0.15s linear;
+  transition: transform 0.5s linear;
+  text-align: center;
+  transform: scale(1);
+
+  &:hover {
+    font-weight: bold;
+    transform: scale(1.1);
+  }
 
   img {
     width: 100%;
@@ -36,6 +31,7 @@
     max-height: 70%;
     max-width: 60%;
     object-fit: contain;
+    object-position: center;
   }
 
   a {
@@ -87,6 +83,18 @@
     img, video {
       aspect-ratio: 16/9;
     }
+  }
+
+  .project-detail {
+    span {
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .project-detail-title {
+    font-weight: bold;
   }
 }
 

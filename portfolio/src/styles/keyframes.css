@@ -38,3 +38,8 @@
   from { transform: scale(0); }
   to { transform: scale(1) }
 }
+
+@keyframes scale-in-minor {
+  from { transform: scale(0.9); }
+  to { transform: scale(1) }
+}

@@ -58,7 +58,7 @@ const routerFx = {
 
 export const routerSubscriptions = actions => [
   { name: 'popstate', action: actions.navigateHistory },
-  { name: 'Lazy_Component_Rendered', action: actions.afterEnterLazy }
+  { name: 'Lazy_View_Rendered', action: actions.afterEnterLazy }
 ];
 
 export const routerActions = dispatch => {

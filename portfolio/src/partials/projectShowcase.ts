@@ -1,6 +1,5 @@
 
-import { div, ul, li, span, video, source } from '../../vendor/modules/HTMLElements.js';
-import { LazyImage } from '../../vendor/modules/lazyImage.js';
+import { div, ul, li, span, video, source, img, dl, dt, dd } from '../../vendor/modules/HTMLElements.js';
 import { Carousel } from './carousel.ts';
 
 interface props {
@@ -8,6 +7,9 @@ interface props {
     brand: string,
     name: string,
     summary: string,
+    role: string,
+    objective?: string,
+    details: string | InnerHTML,
     techList: string[],
     media: object[],
     placeholderImg: string
@@ -15,13 +17,21 @@ interface props {
   index: number
 }
 
+export const ProjectShowcaseState = (id: string): object => ({
+  [id] : {
+    detailsShow: false
+  }
+})
+
 export const ProjectShowcaseView =
 
 (props: props): Function => 
 (e: Function, x: Function, {component: c}: {component: Function}): void => {
 
-  e(div, { class: `project-showcase ${props.index % 2 == 0 ? 'dark-theme' : ''}` })
-    e(div, { class: 'container-full spacer-zero' })
+  const id = `${props.project.name.replace(/ /g, '-').toLowerCase()}`;
+
+  e(div, { id, class: `project-showcase ${props.index % 2 == 0 ? 'dark-theme' : ''}` }, { key: id })
+    e(div, { class: 'container-full spacer-zero intro-animation intro-animation-scale' })
 
       c(Carousel(
         `carouselProject${props.index + 1}`, 
@@ -39,15 +49,16 @@ export const ProjectShowcaseView =
             }
 
             if (media.type === 'image') {
-              c(LazyImage({
-                url: media.url, 
-                placeholderUrl: props.project.placeholderImg,  
-                classes: media.background ? 'image-contain' : ''
-              }));
+              e(img, { 
+                src: media.url, 
+                loading: 'lazy', 
+                class:  media.background ? 'image-contain' : '', 
+                alt: `${props.project.brand} - ${props.project.name} - project image`
+              })
             }
             else if (media.type === 'video') {
               e(video, { 
-                  class: `video ${index === carouselProps.activeIndex ? 'playing' : 'stopped'}`, 
+                  class: `video ${media.background ? 'image-contain' : ''} ${index === carouselProps.activeIndex ? 'playing' : 'stopped'}`, 
                   controls: true, 
                   autoplay: false,
                   muted: true,
@@ -55,7 +66,7 @@ export const ProjectShowcaseView =
                   loop: true,
                   ...( media.poster ? { poster: media.poster } : {})
                 }, 
-                { key: 'videoId' + index })
+                )
                 e(source, { src: media.url, type: 'video/mp4'})
               x(video)
             }
@@ -63,19 +74,35 @@ export const ProjectShowcaseView =
         }
       ))
     x(div)
-    e(div, { class: 'container spacer' })
+    e(div, { class: 'container spacer intro-animation intro-animation-fade' })
       e(div, { class: 'content-section' })
-        e(div, { class: 'project-title spacer'})
+        e(div, { class: 'project-title underline spacer margin'})
           e(span, { class: 'text-subheading' , text: props.project.brand }); x(span)
           e(span, { class: '', text: ' - ' + props.project.name }); x(span)
         x(div)
-        e(ul, { class: 'tech-list spacer-sm'})
 
+        e(ul, { class: 'tech-list spacer'})
           props.project.techList.forEach((techName: string) => {
             e(li, { class: 'tech-name font-small', text: techName }); x(li)
           })
         x(ul)
-        e(div, { class: 'font-small underline spacer', text: props.project.summary }); x(div)
+        
+        e(div, { class: 'project-detail project-summary spacer-sm' })
+          e(span, { class: 'project-detail-title spacer-sm', text: 'Summary:' }); x(span)
+          e(span, { class: 'font-small', text: props.project.summary }); x(span)
+        x(div)
+        e(div, { class: 'project-detail project-role spacer-sm' })
+          e(span, { class: 'project-detail-title spacer-sm', text: 'Role:' }); x(span)
+          e(span, { class: 'font-small spacer-sm', text: props.project.role }); x(span)
+        x(div)
+
+        e(dl)
+          e(dt, { class: 'project-detail-title spacer-sm', text: 'Objective:' }); x(dt)
+          e(dd, { class: 'font-small spacer-sm', text: props.project.objective }); x(dd)
+          e(dt, { class: 'project-detail-title spacer-sm', text: 'Details:' }); x(dt)
+          e(dd, { class: 'font-small spacer', innerHTML: props.project.details }); x(dd)
+        x(dl)
+
       x(div)
     x(div)
   x(div)

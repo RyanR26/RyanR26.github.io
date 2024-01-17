@@ -51,7 +51,7 @@ export const CarouselActions = (id: string): object => ({
           value: (prevValue: number) => direction === 'next' ? 
             (prevValue === itemsLength - 1 ? 0 : prevValue + 1) : 
             (prevValue === 0 ? itemsLength - 1 : prevValue - 1)
-        }],
+        }, { preventRender: true }],
         ['effect', {
           name: CarouselFx.getActiveItemEl,
           args: [event]
@@ -190,6 +190,7 @@ export const CarouselView =
       e(div, { class: 'carousel-track', style: { transform: `translate3d(-${props.transformOffset}px, 0, 0)`} })
 
         props.items.map((item, index) => {
+
           e(div, { 
             class: `carousel-item ${index === props.activeIndex ? 'active' : ''}`, 
             style: {
@@ -204,7 +205,7 @@ export const CarouselView =
       x(div)
 
       if (props.config.pagination) {
-        e(div, { class: 'carousel-pagination' })
+        e(div, { class: 'carousel-pagination font-xsmall' })
           e(span, { text: props.activeIndex + 1 }); x(span)
           e(span, { text: ' / ' }); x(div)
           e(span, { text: props.items.length }); x(span)

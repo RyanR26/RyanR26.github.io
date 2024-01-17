@@ -19,3 +19,6 @@ export const ul = 'ul';
 export const li = 'li';
 export const video = 'video';
 export const source = 'source';
+export const dl = 'dl';
+export const dt = 'dt';
+export const dd = 'dd';

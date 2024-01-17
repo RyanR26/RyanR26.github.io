@@ -3,137 +3,45 @@
   "section": "personal projects",
   "colorTheme": "red-theme",
   "intro": "Building from scratch, experimenting with different ideas and learning from trial and error is my preferred way of really understanding how things work.",
-  "subIntro": "With todays abundance of ready made products it is easier than ever just to add paint to the house. Sometimes it is more interesting to learn how to create the bricks in order to build the house...",
-  "content": "Here are some of my own projects which I have been busy with recently. Hopefully they will be useful for other people once they are fully stable.",
+  "subIntro": "With the abundance of today's pre-fabricated offerings, it is easier than ever just to add the frills. Sometimes it's more interesting to learn how to lay the foundations than it is to layer the paint.",
+  "content": "Here are some of my own projects which I have been busy with recently. They are in various stages of completeness and I am looking at updating documentation asap.",
   "showcase": {
     "heading": "RECENT PROJECTS",
     "projects": [
       {
         "name": "KARBON",
         "title": "Unique JS framework for building user interfaces",
-        "summary": "<p>Karbon is my own take on what a UI framework should look like. It takes inspiration from Elm's functional approach while remaining undogmatic and pragmatic and retaining the flexibilty that JS offers.</p><p> I started builing Karbon as away to understand the virtual dom approach used in React and other popular frameworks. However, I realised that I could go much further than this and try to address some of the issues I disliked about the component approach and try to create something with more separated concerns when it come to the view, state, effects interactions and management.</p><p>The result was Karbon which, although still in optimisation progres, is a fully functional UI framework. In fact this SPA application is built with it.</p>",
-        "usps": ["Single state", "VDOM", "State manager",  "Effects manager", "Subscription api"],
+        "summary": "<p>Karbon is my own take on what a UI framework should look like. It takes inspiration from Elm's functional approach while remaining undogmatic, pragmatic and retaining the flexibility that JS offers.</p><p> I started building Karbon as a way to understand the virtual dom approach used in React and other popular frameworks. However, I realised that I could go much further than this and try to address some of the things I disliked about the component approach; creating something with more separated concerns around the view and model layers and a more logical approach to state and effects management.</p><p>The result was Karbon which is a fully functional UI framework. In fact this site is built with it. Have a look at the <a href='https://github.com/RyanR26/RyanR26.github.io/tree/main/portfolio/src/' target='_blank'>source code</a> if you are curious.</p><p class='font-xsmall'>* Documentation is still a work in progress..</p>",
+        "usps": ["Single state app", "separated concerns", "Unique templating api", "State manager",  "Effects manager", "Subscription api", "SSR", "Lazy views"],
         "links": [{
           "url": "https://github.com/RyanR26/karbon",
           "label": "See project on Github",
           "img": "/images/logos/github-icon.png"
-        }],
-        "media": [ 
-          {
-            "type": "video",
-            "url": "/images/projects/lbx-hub/signed-out.mp4"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-2.png"
-          },
-          {
-            "type": "video",
-            "url": "/images/projects/lexus-style-selector/style-selector.mp4"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-4.png"
-          }, 
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-5.png"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-6.png"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-7.png"
-          }
-        ],
-        "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"
-      },
-      {
-        "name": "MOVIMENTO",
-        "title": "CSS animations library",
-        "summary": "<p>Animations properties introduced in CSS3 have given us immense power for amazing page animations and transitions, however, being handled directly in the CSS stylesheet became more of a hassle for quick implementation and reuse. Originally built for a commercial project where we needed building blocks to quickly scafflod new componenets with a range of animations. These library allows CSS animations to be quickly implemented via data attributes directly in the HTML.</p>",
-        "usps": ["Declarative code", "HTML augmentation", "CCS3 animations", "SASS", "Fine control vis JS",  "React component"],
-        "links": [{
-          "url": "https://github.com/RyanR26/karbon",
-          "label": "See project on Github",
-          "img": "/images/logos/github-icon.png"
-        }],
-        "media": [ 
-          {
-            "type": "video",
-            "url": "/images/projects/lbx-hub/signed-out.mp4"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-2.png"
-          },
-          {
-            "type": "video",
-            "url": "/images/projects/lexus-style-selector/style-selector.mp4"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-4.png"
-          }, 
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-5.png"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-6.png"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-7.png"
-          }
-        ],
-        "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"
+        }]
       },
       {
         "name": "PARALLEX",
         "title": "JS library for parallax scrolling effects",
-        "summary": "<p>Animations properties introduced in CSS3 have given us immense power for amazing page animations and transitions, however, being handled directly in the CSS stylesheet became more of a hassle for quick implementation and reuse. Originally built for a commercial project where we needed building blocks to quickly scafflod new componenets with a range of animations. These library allows CSS animations to be quickly implemented via data attributes directly in the HTML.</p>",
-        "usps": ["Declarative code", "HTML augmentation", "CCS3 animations", "SASS", "Fine control vis JS",  "React component"],
+        "summary": "<p>After failing in my search to find a parallax library that could handle the fine grained control that was required for a specific project I ended up creating my own library.</p><p>I needed the ability to handle parallax speed, direction and active state for each element easily, directly from the HTML using data attributes and classes, in addition to allowing for manual interaction via a set of start/stop/pause controls in JS.</p><p>Out of the frustration with not finding one package that could do it all I created Parallex to handle these requirements effortlessly.</p><p class='font-xsmall'>* Documentation coming soon.</p> ",
+        "usps": ["Declarative code", "HTML augmentation", "Parralax scrolling effects", "SASS", "Manual control via JS"],
         "links": [{
           "url": "https://github.com/RyanR26/karbon",
           "label": "See project on Github",
           "img": "/images/logos/github-icon.png"
-        }],
-        "media": [ 
-          {
-            "type": "video",
-            "url": "/images/projects/lbx-hub/signed-out.mp4"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-2.png"
-          },
-          {
-            "type": "video",
-            "url": "/images/projects/lexus-style-selector/style-selector.mp4"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-4.png"
-          }, 
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-5.png"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-6.png"
-          },
-          {
-            "type": "image",
-            "url": "/images/projects/lexus-ai-experience/ai-7.png"
-          }
-        ],
-        "placeholderImg": "/images/projects/lexus-ai-experience/ai-1-placeholder.png"
+        }]
+      },
+      {
+        "name": "MOVIMENTO",
+        "title": "CSS animations library",
+        "summary": "<p>Animation properties introduced in CSS3 have given us immense power for amazing page animations and transitions, however, being handled directly in the CSS stylesheet can lead to bloat and become more of a hassle for quick implementation and reuse.</p><p>Originally built for a commercial project where we needed building blocks to quickly scafflod new componenets with a range of animations. This library allows CSS animations to be quickly implemented via data attributes directly in the HTML.</p><p>I have also created a React component that can make use of the library in a similar fashion to the React Transition Group CSSTransition component.</p><p class='font-xsmall'>* Repo not public yet - coming very ssoon</p>",
+        "usps": ["Declarative code", "HTML augmentation", "CCS3 animations", "Sass", "Fine control via JS",  "React component"],
+        "links": [{
+          "url": "",
+          "label": "See project on Github",
+          "img": "/images/logos/github-icon.png"
+        }]
       }
+
     ]
   }
 }

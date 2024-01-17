@@ -1,7 +1,6 @@
 import * as data from '../data/nav.json';
 import { nav, div, span, ul, li, a, button } from '../../vendor/modules/HTMLElements.js';
 import { Link } from '../../vendor/modules/Router.js';
-import { ClockView } from '../partials/clock.ts';
 import { Debounce } from '../../vendor/modules/time.js';
 
 interface navData {
@@ -186,8 +185,7 @@ export const NavView =
   }
 
   const footer = (): void => {
-    e(div, { class: 'bottom-right font-xsmall', text: 'Built with Karbon UI framework'})
-      // c({ ClockView }, { props: { ...props.clock }})
+    e(div, { class: 'bottom-right font-xxsmall', text: data.footer.content })
     x(div)
   }
 

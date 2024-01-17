@@ -3,6 +3,10 @@ import { div, span, section, h4, ul, li, a, img} from '../../vendor/modules/HTML
 import { ScreenContainerView } from '../partials/screenContainer.js';
 import { SectionIntroView } from '../partials/sectionIntro.js';
 
+interface props {
+  scrollPosition: number
+}
+
 interface project {  
   name: string,
   title: string,
@@ -13,13 +17,14 @@ interface project {
 
 export const PersonalProjectsView = 
 
-(): Function => 
+(props: props): Function => 
 (e: Function, x: Function, {component: c}: {component: Function}): void => {
 
   c({ ScreenContainerView }, { props: {
     title: data.title,
     section: data.section,
     colorTheme: data.colorTheme,
+    scrollPosition: props.scrollPosition,
     children: () => {
 
       c({ SectionIntroView }, {
@@ -28,8 +33,10 @@ export const PersonalProjectsView =
           subIntro: data.subIntro
       }})
 
-      e(section, { class: 'container'})
-        e(div, { class: 'content-section', text: data.content }); x(div)
+      e(section, { class: 'container' })
+        e(div, { class: 'content-section'  })
+          e(div, { class: 'three-quarter-width', text: data.content }); x(div)
+        x(div)
       x(section)
 
       e(section, { class: 'dark-theme' })
@@ -41,7 +48,7 @@ export const PersonalProjectsView =
           data.showcase.projects.forEach((
             project: project) => {
 
-              e(div, { class: 'container spacer-sm' })
+              e(div, { class: 'container spacer-sm intro-animation intro-animation-fade' })
                 e(div, { class: 'content-section underline' })
                   e(div, { class: 'project-title spacer'})
                     e(span, { class: 'text-subheading' , text: project.name }); x(span)
@@ -58,7 +65,13 @@ export const PersonalProjectsView =
           
                     project.links.forEach(link => {
                       e(li, { class: 'font-small' }); 
-                        e(a, { class: 'link', text: link.label, href: link.url, target: '_blank' }); 
+                        e(a, { 
+                            class: `link ${link.url ? '' : 'link-disable'}`, 
+                            text: link.label,
+                            href: link.url, 
+                            target: '_blank',
+                            ...( link.url ? {} : { tabindex: '-1' })
+                          }); 
                           e(span, { class: 'link-icon' })
                             e(img, { src: link.img, alt: 'logo '})
                           x(span)
