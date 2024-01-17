@@ -37,7 +37,7 @@ const SrcollToTopButtonView =
     e(button, { 
       class: 'scroll-to-top', 
       text: 'scroll to top', 
-      onclick: [actions.ScrollToTopButtonActions.scroll] 
+      onclick: actions.ScrollToTopButtonActions.scroll
     }, { key: 'scroll-to-top' }); 
     x(button)
   }

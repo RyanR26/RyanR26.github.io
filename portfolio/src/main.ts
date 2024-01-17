@@ -72,14 +72,6 @@ const globalActions = (dispatch: dispatch) => ({
     )
   },
 
-  setViewportHeight() {
-    dispatch.msgs(
-      ['effect', {
-        name: Fx.setViewportHeight
-      }]
-    )
-  },
-
   setScrollPosition() {
     dispatch.msgs(
       ...__Throttle(50, 'page-scroll'), 
@@ -144,10 +136,6 @@ const Fx = {
       left: 0, 
       behavior: 'smooth' 
      });
-  },
-
-  setViewportHeight() {
-    document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
   }
 }
 
@@ -200,10 +188,6 @@ const App = {
       action: actions.globalActions.setViewportSize
     },
     { 
-      name: 'resize',
-      action: actions.globalActions.setViewportHeight
-    },
-    { 
       name: 'Lazy_View_Rendered',
       action: [actions.globalActions.triggerSubscriptions,  ['router', 'current']]
     },
@@ -215,7 +199,6 @@ const App = {
 
   init: () => {
     routerConfig(routerConfigObj)
-    Fx.setViewportHeight()
   },
 
   view: 
@@ -276,4 +259,4 @@ const App = {
   }
 }
 
-window.karbon.render(App)
+window.karbon.hydrate(App)

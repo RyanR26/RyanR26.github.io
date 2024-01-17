@@ -27,7 +27,6 @@ export const routerConfig = config => {
   });
 
   routeHooks = hooks;
-  console.log(routeHooks)
 };
 
 export const routerState = () => ({

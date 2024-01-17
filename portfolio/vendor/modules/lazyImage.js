@@ -2,7 +2,6 @@ const lazyImageCache = {};
 
 const loadImage = url => new Promise((resolve, reject) => {
   const img = new Image();
-  // const loaded = () => resolve(img)
   img.addEventListener('load', () => resolve(img));
   img.addEventListener('error', (err) => reject(err));
   img.src = url;

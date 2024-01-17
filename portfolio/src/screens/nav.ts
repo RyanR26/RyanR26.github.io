@@ -21,7 +21,7 @@ interface props {
   clock: object,
   contactShow: boolean,
   hoveredItem: string,
-  viewportSize: string,
+  viewportSize?: string,
   router: {
     current: string,
     next: string
@@ -102,25 +102,25 @@ export const NavView =
 (e: Function, x: Function, {component: c}: {component: Function}): void => {
 
 
-  const navItem = (name: string, path: string='/', className?: string): void => {
+  const navItem = (name: string, path: string='/', className: string=''): void => {
     const dataAttributeValue: string = path.replace('/', '').replace('-', '_');
     e(div, { 
-      class: `nav-item route-link ${className || ''} ${props.routeTransition === 'in' ? 'fade-out' : 'fade-in'}`,
+      class: `nav-item route-link ${className} ${props.routeTransition === 'in' ? 'fade-out' : 'fade-in'}`,
       data: [`section=${dataAttributeValue}`],
       onmouseenter: actions.NavActions.setHoveredItem,
       onmouseleave: actions.NavActions.resetHoveredItem
-    }, { key: 'key_' + dataAttributeValue })
+      }, { key: 'key_' + dataAttributeValue })
       e(div)
         c(Link(name, path, 'dot-grid'))
       x(div)
     x(div)
   }
 
-  const contentItem = (children: Function, key: string, id?: string): void => {
+  const contentItem = (children: Function, key: string, id?: string, className: string=''): void => {
     e(div, { 
-      class: `nav-item content-item ${ props.routeTransition === 'in' ? 'fade-out' : 'fade-in'}`,
-      ...( id ? {
-        data: [`section=${id}`],
+      class: `nav-item content-item ${ props.routeTransition === 'in' ? 'fade-out' : 'fade-in'} ${className}`,
+      ...( !!id ? 
+        { data: [`section=${id}`],
         onmouseenter: actions.NavActions.setHoveredItem,
         onmouseleave: actions.NavActions.resetHoveredItem
       } : null)
@@ -130,7 +130,7 @@ export const NavView =
   }
 
   const mainContent = (): void => {
-    e(div, { class: `nav-item content-container ${ props.routeTransition === 'in' ? 'transition-in' : 'transition-out'}`}, { key : 'main-content'})
+    e(div, { class: `nav-item content-container small-view-hide ${ props.routeTransition === 'in' ? 'transition-in' : 'transition-out'}`}, { key : 'main-content'})
       e(div, { class: 'logo-container' }); 
         logo()
       x(div) 
@@ -189,23 +189,17 @@ export const NavView =
     x(div)
   }
 
-  const viewportLarge: boolean = props.viewportSize === 'large';
-
-  e(nav, { class: `nav ${!viewportLarge ? 'nav-small' : ''}` })
+  e(nav, { class: 'nav' })
 
     contentItem(heading, 'heading')
 
     navItem(aboutData.name, aboutData.path, aboutData.className)
 
-    if (viewportLarge) {
-      contentItem(dynamicTextInfo, 'dynamicTextInfo')
-    }
-
+    contentItem(dynamicTextInfo, 'dynamicTextInfo', '', 'small-view-hide')
+   
     navItem(personalProjectsData.name, personalProjectsData.path, personalProjectsData.className)
 
-    if (viewportLarge) {
-      mainContent()
-    }
+    mainContent()
 
     navItem(workData.name, workData.path, workData.className)
 
@@ -213,9 +207,7 @@ export const NavView =
 
     navItem(skillsetData.name, skillsetData.path, skillsetData.className)
 
-    if (viewportLarge) {
-      contentItem(footer, 'footer')
-    }
+    contentItem(footer, 'footer', '', 'small-view-hide')
 
   x(nav)
   
