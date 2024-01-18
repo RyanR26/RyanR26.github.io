@@ -8,13 +8,13 @@
   "brands": [
     {
       "name": "Lexus",
-      "url": "https:/www.lexus.eu",
+      "url": "https://www.lexus.eu",
       "img": "/images/logos/Lexus.png",
       "placeholderImg": "/images/logos/Lexus-thumb.png"
     },
     {
       "name": "Toyota",
-      "url": "https:/www.toyota.eu",
+      "url": "https://www.toyota-europe.com/",
       "img": "/images/logos/Toyota.png",
       "placeholderImg": "/images/logos/Toyota-thumb.png"      
     },

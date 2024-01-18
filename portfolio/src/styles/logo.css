@@ -1,5 +1,5 @@
 .logo {
-  font-size: clamp(60px, 5vw, 80px);
+  font-size: clamp(20px, 5vw, 80px);
   font-weight: 200;
   width: auto;
   border: 5px solid var(--dark);
@@ -7,9 +7,9 @@
   border-right-color: var(--green);
   border-bottom-color: var(--pink);
   border-left-color: var(--red);
-  border-radius: 50px;
-  width: clamp(90px, 9vw, 130px);
-  height: clamp(90px, 9vw, 130px);
+  border-radius: 36%;
+  width: clamp(50px, 9vw, 130px);
+  height: clamp(50px, 9vw, 130px);
   display: flex;
   justify-content: center;
   align-items: center;

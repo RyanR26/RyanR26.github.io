@@ -32,14 +32,10 @@ export const WorkView =
         c({ SectionIntroView }, {
           props: {
             intro: data.intro,
-            subIntro: data.subIntro
+            subIntro: data.subIntro,
+            content: data.content
         }})
 
-        e(section, { class: 'container'})
-          e(div, { class: 'content-section underline text-container' })
-            e(div, { class: 'three-quarter-width', text: data.content });  x(div)
-          x(div)
-        x(section)
         e(section, { class: 'container spacer-lg'})
           e(ul, { class: 'client-tiles' })
 

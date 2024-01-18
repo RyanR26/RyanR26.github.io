@@ -1,4 +1,4 @@
-import { button } from '../../vendor/modules/HTMLElements';
+import { button, span } from '../../vendor/modules/HTMLElements';
 
 interface props {
   scrollPosition: number,
@@ -39,6 +39,7 @@ const SrcollToTopButtonView =
       text: 'scroll to top', 
       onclick: actions.ScrollToTopButtonActions.scroll
     }, { key: 'scroll-to-top' }); 
+      e(span); x(span)
     x(button)
   }
 }

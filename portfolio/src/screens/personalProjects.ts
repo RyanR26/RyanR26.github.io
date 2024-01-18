@@ -30,14 +30,10 @@ export const PersonalProjectsView =
       c({ SectionIntroView }, {
         props: {
           intro: data.intro,
-          subIntro: data.subIntro
+          subIntro: data.subIntro,
+          content: data.content,
+          underline: false
       }})
-
-      e(section, { class: 'container' })
-        e(div, { class: 'content-section'  })
-          e(div, { class: 'three-quarter-width', text: data.content }); x(div)
-        x(div)
-      x(section)
 
       e(section, { class: 'dark-theme' })
         e(div, { class: 'container'})

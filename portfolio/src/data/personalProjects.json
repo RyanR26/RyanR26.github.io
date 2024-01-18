@@ -23,9 +23,9 @@
         "name": "PARALLEX",
         "title": "JS library for parallax scrolling effects",
         "summary": "<p>After failing in my search to find a parallax library that could handle the fine grained control that was required for a specific project I ended up creating my own library.</p><p>I needed the ability to handle parallax speed, direction and active state for each element easily, directly from the HTML using data attributes and classes, in addition to allowing for manual interaction via a set of start/stop/pause controls in JS.</p><p>Out of the frustration with not finding one package that could do it all I created Parallex to handle these requirements effortlessly.</p><p class='font-xsmall'>* Documentation coming soon.</p> ",
-        "usps": ["Declarative code", "HTML augmentation", "Parralax scrolling effects", "SASS", "Manual control via JS"],
+        "usps": ["Declarative code", "HTML augmentation", "Parallax scrolling effects", "SASS", "Manual control via JS"],
         "links": [{
-          "url": "https://github.com/RyanR26/karbon",
+          "url": "https://github.com/RyanR26/Parallex",
           "label": "See project on Github",
           "img": "/images/logos/github-icon.png"
         }]

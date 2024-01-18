@@ -22,17 +22,14 @@ export const SkillsView =
       c({ SectionIntroView }, {
         props: {
           intro: data.intro,
-          subIntro: data.subIntro
+          subIntro: data.subIntro,
+          content: data.rolesIntro,
+          underline: false
       }})
       
-      e(section, { class: 'container' })
-        e(div, { class: 'content-section'  })
-          e(div, { class: 'three-quarter-width', text: data.rolesIntro }); x(div)
-        x(div)
-      x(section)
       e(section, { class: 'dark-theme'})
         e(div, { class: 'container intro-animation intro-animation-fade'})
-          e(h4, { class: 'content-section underline', text: 'GENERAL EXPERTISE' }); x(h4)
+          e(h4, { class: 'content-section underline', text: data.rolesHeading }); x(h4)
           e(div, { class: 'content-section text-container' }); 
             e(ul, { class: 'skills-list' })
 
@@ -45,7 +42,7 @@ export const SkillsView =
         x(div)
       x(section)
       e(section, { class: 'container intro-animation intro-animation-fade'})
-        e(h4, { class: 'content-section underline', text: 'TECHNICAL EXPERTISE' }); x(h4)
+        e(h4, { class: 'content-section underline', text: data.technologiesHeading }); x(h4)
         e(div, { class: 'content-section text-container' })
           e(ul, { class: 'skills-list technologies-list' })
 
@@ -55,7 +52,7 @@ export const SkillsView =
 
           x(ul)
         x(div)
-        e(div, { class: 'content-section font-xsmall font-serif', text: data.technologiesIntro }); x(div)
+        e(div, { class: 'content-section font-xsmall font-serif', text: data.technologiesFooter }); x(div)
       x(section)
     }
   }})

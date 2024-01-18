@@ -128,7 +128,7 @@ button {
   right: 20px;
   width: 36px;
   height: 36px;
-  border: 1px solid var(--underline);
+  border: 2px solid var(--underline);
   border-radius: 100%;
   text-indent: -10000px;
   display: flex;
@@ -136,16 +136,16 @@ button {
   justify-content: center;
   animation: fade-in 0.5s linear;
 
-  &::after {
-    content: '';
-    width: 14px;
-    height: 14px;
+  span {
+    border-top: 3px solid var(--underline);
+    border-left: 3px solid var(--underline);
+    width: 15px;
+    height: 15px;
     transform: rotate(45deg);
-    border-top: 1px solid var(--underline);
-    border-left: 1px solid var(--underline);
     margin-top: 6px;
+    position: relative;
+    display: block;
   }
-
 }
 
 .link {
@@ -196,6 +196,10 @@ button {
   background-image: var(--light-gradient);
   color: var(--dark);
   overflow-x: hidden;
+
+  .logo {
+    border-color: var(--underline);
+  }
 }
 
 .container {
@@ -266,6 +270,24 @@ button {
   p {
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+}
+
+.content-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-container-inline {
+  width: 25%;
+
+  .logo {
+    margin: 0 0 0 auto;
+
+    @media (min-width: 569px) {
+      margin: 0 auto;
     }
   }
 }

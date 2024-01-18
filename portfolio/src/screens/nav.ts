@@ -1,7 +1,8 @@
 import * as data from '../data/nav.json';
-import { nav, div, span, ul, li, a, button } from '../../vendor/modules/HTMLElements.js';
+import { nav, div, ul, li, a, button } from '../../vendor/modules/HTMLElements.js';
 import { Link } from '../../vendor/modules/Router.js';
 import { Debounce } from '../../vendor/modules/time.js';
+import { LogoView } from '../partials/logo.js';
 
 interface navData {
   snippet: string,
@@ -132,15 +133,10 @@ export const NavView =
   const mainContent = (): void => {
     e(div, { class: `nav-item content-container small-view-hide ${ props.routeTransition === 'in' ? 'transition-in' : 'transition-out'}`}, { key : 'main-content'})
       e(div, { class: 'logo-container' }); 
-        logo()
+        c({ LogoView }, { props: {
+          rotate: true
+        }})
       x(div) 
-    x(div)
-  }
-
-  const logo = (): void => {
-    e(div, { class: 'logo rotate'})
-      e(span, { text: 'R' }); x(span)
-      e(span, { text: 'R' }); x(span)
     x(div)
   }
 
