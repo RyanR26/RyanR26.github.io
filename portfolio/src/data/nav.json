@@ -27,7 +27,7 @@
     "className": "green-background"
   },
   "personal_projects": {
-    "snippet": "See what I'm tinkering with in my free time...",
+    "snippet": "See what I'm working on in my free time...",
     "path": "/personal-projects",
     "name": "personal projects",
     "className": "red-background"
