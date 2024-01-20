@@ -529,7 +529,7 @@
       "summary": "Update booking process through in page forms",
       "role": "Lead FE Developer",
       "objective": "Increase user follow through and sales by providing a quick responsive booking form directly from the tour details page",
-      "details": "<p>New form components capturing data related to tour date, pick-up and drop-off times, language necessities, passenger numbers etc were needed in order to make the required bookings.</p><p>As the site had an already established techstack and large codebase there was not much room for new additions or changes. The new booking forms were created using JSTL templates and JS code using the Jquery library was used to hook into the various backend apis that handled the client data for reservations.</p>",
+      "details": "<p>New form components capturing data related to tour date, pick-up and drop-off times, language necessities and passenger numbers etc. were needed in order to make the required bookings.</p><p>As the site had an already established Tech Stack and large codebase, there was little room for new additions or changes. The new booking forms were created in JSTL templates with data coming from Hybris CMS, and JS (using Jquery) was used to hook into the various backend apis that handled the client data for reservations.</p>",
       "techList": ["HTML5", "JSTL", "CSS", "JS", "Jquery", "Hybris", "Responsive design"],
       "media": [
         {

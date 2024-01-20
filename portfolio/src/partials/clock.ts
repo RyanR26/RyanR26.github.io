@@ -7,6 +7,10 @@ interface props {
   title: string
 }
 
+interface actions {
+  [key: string]: { tick: Function }
+}
+
 export const ClockState = (id: string='clock'): object => ({
   [id] : {
     active: true,
@@ -31,10 +35,6 @@ export const ClockActions = (id: string='clock'): object => ({
     }
   })
 })
-
-interface actions {
-  [key: string]: { tick: Function }
-}
 
 export const ClockSubscriptions = (id: string, active: boolean, actions: actions): object => ({
   name: Interval,

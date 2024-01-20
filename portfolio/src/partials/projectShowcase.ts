@@ -17,16 +17,10 @@ interface props {
   index: number
 }
 
-export const ProjectShowcaseState = (id: string): object => ({
-  [id] : {
-    detailsShow: false
-  }
-})
-
 export const ProjectShowcaseView =
 
 (props: props): Function => 
-(e: Function, x: Function, {component: c}: {component: Function}): void => {
+(e: Function, x: Function, {component: c, block}: {component: Function, block: Function}): void => {
 
   const id = `${props.project.name.replace(/ /g, '-').toLowerCase()}`;
 
@@ -39,8 +33,7 @@ export const ProjectShowcaseView =
 
         (media: { type: string, url: string, poster?: string, background?: string }, 
         index: number,
-        carouselProps: { activeIndex: number } 
-        ) => {
+        carouselProps: { activeIndex: number }) => {
 
           e(div, { class: 'project-media-container ' })
 
@@ -74,36 +67,41 @@ export const ProjectShowcaseView =
         }
       ))
     x(div)
-    e(div, { class: 'container spacer intro-animation intro-animation-fade' })
-      e(div, { class: 'content-section' })
-        e(div, { class: 'project-title underline spacer margin'})
-          e(span, { class: 'text-subheading' , text: props.project.brand }); x(span)
-          e(span, { class: '', text: ' - ' + props.project.name }); x(span)
-        x(div)
 
-        e(ul, { class: 'tech-list spacer'})
-          props.project.techList.forEach((techName: string) => {
-            e(li, { class: 'tech-name font-small', text: techName }); x(li)
-          })
-        x(ul)
-        
-        e(div, { class: 'project-detail project-summary spacer-sm' })
-          e(span, { class: 'project-detail-title spacer-sm', text: 'Summary:' }); x(span)
-          e(span, { class: 'font-small', text: props.project.summary }); x(span)
-        x(div)
-        e(div, { class: 'project-detail project-role spacer-sm' })
-          e(span, { class: 'project-detail-title spacer-sm', text: 'Role:' }); x(span)
-          e(span, { class: 'font-small spacer-sm', text: props.project.role }); x(span)
-        x(div)
+    block(`project-details-${props.index}`, () => {
+      e(div, { class: 'container spacer intro-animation intro-animation-fade' })
+        e(div, { class: 'content-section' })
+          e(div, { class: 'project-title underline spacer margin'})
+            e(span, { class: 'text-subheading' , text: props.project.brand }); x(span)
+            e(span, { class: '', text: ' - ' + props.project.name }); x(span)
+          x(div)
 
-        e(dl)
-          e(dt, { class: 'project-detail-title spacer-sm', text: 'Objective:' }); x(dt)
-          e(dd, { class: 'font-small spacer-sm', text: props.project.objective }); x(dd)
-          e(dt, { class: 'project-detail-title spacer-sm', text: 'Details:' }); x(dt)
-          e(dd, { class: 'font-small spacer', innerHTML: props.project.details }); x(dd)
-        x(dl)
+          e(ul, { class: 'tech-list spacer'})
+            props.project.techList.forEach((techName: string) => {
+              e(li, { class: 'tech-name font-small', text: techName }); x(li)
+            })
+          x(ul)
+          
+          e(div, { class: 'project-detail project-summary spacer-sm' })
+            e(span, { class: 'project-detail-title spacer-sm', text: 'Summary:' }); x(span)
+            e(span, { class: 'font-small', text: props.project.summary }); x(span)
+          x(div)
+          e(div, { class: 'project-detail project-role spacer-sm' })
+            e(span, { class: 'project-detail-title spacer-sm', text: 'Role:' }); x(span)
+            e(span, { class: 'font-small spacer-sm', text: props.project.role }); x(span)
+          x(div)
 
+          e(dl)
+            e(dt, { class: 'project-detail-title spacer-sm', text: 'Objective:' }); x(dt)
+            e(dd, { class: 'font-small spacer-sm', text: props.project.objective }); x(dd)
+            e(dt, { class: 'project-detail-title spacer-sm', text: 'Details:' }); x(dt)
+            e(dd, { class: 'font-small spacer', innerHTML: props.project.details }); x(dd)
+          x(dl)
+
+        x(div)
       x(div)
-    x(div)
+    })
+
   x(div)
+
 }

@@ -864,7 +864,7 @@ var karbon = (function (exports) {
   		keyName = flags.key;
   		isKeyed = !!keyName;
 
-  		vNode = createVNode(tagName, componentActiveIndexArray[componentActiveIndexArray.length - 1], data, rootIndex, keyName, flags.staticChildren, componentActiveArray[componentActiveArray.length - 1], subscribesToArray[subscribesToArray.length - 1], renderingSvg, block, blockProps, false);
+  		vNode = createVNode(tagName, componentActiveIndexArray[componentActiveIndexArray.length - 1], data, creatingBlock ? rootIndex + 1 : rootIndex, keyName, flags.staticChildren, componentActiveArray[componentActiveArray.length - 1], subscribesToArray[subscribesToArray.length - 1], renderingSvg, block, blockProps, false);
 
   		if (renderProcess === 'creatingHydrationLayer') {
   			Object.keys(vNode.props).map(function (key) {
@@ -1154,7 +1154,7 @@ var karbon = (function (exports) {
   		if (node.level === nodeLevel) {
   			blockParentNodeStack.length = blockParentNodeStack.length - 1;
   		} else if (node.level < nodeLevel) {
-  			blockParentNodeStack.length = blockParentNodeStack.length - (nodeLevel - node.level);
+  			blockParentNodeStack.length = blockParentNodeStack.length - (nodeLevel - node.level) - 1;
   		}
 
   		var element = createDomElement(node);
@@ -1431,20 +1431,6 @@ var karbon = (function (exports) {
   					node.removeAttribute(prop);
   				}
   				break;
-
-  				// const keys = Object.keys(value);
-  				// let hasStyles = false;
-  				// for (let i = 0; i < keys.length; i++) {
-  				// 	const key = keys[i];
-  				// 	if (isDefined(value[key])) {
-  				//     node.style[key] = value[key];
-  				//     hasStyles = true;
-  				// 	}
-  				// }
-  				// if (!hasStyles) {
-  				//   node.removeAttribute(prop);
-  				// }
-  				// break;
   			}
   		case 'text':
   			if (node.hasChildNodes()) {

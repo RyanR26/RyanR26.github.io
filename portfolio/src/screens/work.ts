@@ -19,7 +19,7 @@ interface brand {
 export const WorkView = 
 
 (props: props): Function => 
-(e: Function, x: Function, {component: c}: {component: Function, lazy: Function}): void => {
+(e: Function, x: Function, {component: c}: {component: Function }): void => {
   
   c({ ScreenContainerView }, { 
     props: {
@@ -58,6 +58,7 @@ export const WorkView =
             })
           x(ul)
         x(section)
+
         e(section)
           e(div, { class: 'dark-theme' })
             e(div, { class: 'container no-padding-bottom'})

@@ -7,7 +7,6 @@ import { NavState, NavView, NavActions } from './screens/nav.ts';
 import { main, div } from '../vendor/modules/HTMLElements.js';
 import { CarouselActions, CarouselState, CarouselSubscriptions } from './partials/carousel.ts';
 import { IntersectObserver } from '../vendor/modules/subscriptions.js';
-import { ProjectShowcaseState } from './partials/projectShowcase.ts';
 import { __Throttle } from '../vendor/modules/time.js';
 
 declare global {
@@ -147,7 +146,6 @@ const App = {
     ...routerState(),
     ...ClockState('clock'),
     ...buildGlobalInstances('state', (i: number) => CarouselState('carouselProject' + i), 8),
-    ...buildGlobalInstances('state', (i: number) => ProjectShowcaseState('projectShowcase' + i), 8),
     ...NavState,
     landingScreenActive: true,
     routeTransition: null,
