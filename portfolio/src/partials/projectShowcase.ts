@@ -22,7 +22,7 @@ export const ProjectShowcaseView =
 (props: props): Function => 
 (e: Function, x: Function, {component: c, block}: {component: Function, block: Function}): void => {
 
-  const id = `${props.project.name.replace(/ /g, '-').toLowerCase()}`;
+  const id: string = `${props.project.name.replace(/ /g, '-').toLowerCase()}`;
 
   e(div, { id, class: `project-showcase ${props.index % 2 == 0 ? 'dark-theme' : ''}` }, { key: id })
     e(div, { class: 'container-full spacer-zero intro-animation intro-animation-scale' })
@@ -51,15 +51,14 @@ export const ProjectShowcaseView =
             }
             else if (media.type === 'video') {
               e(video, { 
-                  class: `video ${media.background ? 'image-contain' : ''} ${index === carouselProps.activeIndex ? 'playing' : 'stopped'}`, 
-                  controls: true, 
-                  autoplay: false,
-                  muted: true,
-                  playsInline: true,
-                  loop: true,
-                  ...( media.poster ? { poster: media.poster } : {})
-                }, 
-                )
+                class: `video ${media.background ? 'image-contain' : ''} ${index === carouselProps.activeIndex ? 'playing' : 'stopped'}`, 
+                controls: true, 
+                autoplay: false,
+                muted: true,
+                playsInline: true,
+                loop: true,
+                ...( media.poster ? { poster: media.poster } : {})
+              })
                 e(source, { src: media.url, type: 'video/mp4'})
               x(video)
             }
@@ -75,13 +74,13 @@ export const ProjectShowcaseView =
             e(span, { class: 'text-subheading' , text: props.project.brand }); x(span)
             e(span, { class: '', text: ' - ' + props.project.name }); x(span)
           x(div)
-
           e(ul, { class: 'tech-list spacer'})
+
             props.project.techList.forEach((techName: string) => {
               e(li, { class: 'tech-name font-small', text: techName }); x(li)
             })
+
           x(ul)
-          
           e(div, { class: 'project-detail project-summary spacer-sm' })
             e(span, { class: 'project-detail-title spacer-sm', text: 'Summary:' }); x(span)
             e(span, { class: 'font-small', text: props.project.summary }); x(span)
@@ -90,7 +89,6 @@ export const ProjectShowcaseView =
             e(span, { class: 'project-detail-title spacer-sm', text: 'Role:' }); x(span)
             e(span, { class: 'font-small spacer-sm', text: props.project.role }); x(span)
           x(div)
-
           e(dl)
             e(dt, { class: 'project-detail-title spacer-sm', text: 'Objective:' }); x(dt)
             e(dd, { class: 'font-small spacer-sm', text: props.project.objective }); x(dd)

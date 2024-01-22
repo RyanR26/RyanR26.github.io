@@ -44,7 +44,7 @@ const SrcollToTopButtonView =
   }
 }
 
-export const ScrollToTopButton = (scrollPosition: number) => [
+export const ScrollToTopButton = (scrollPosition: number): object[] => [
   { SrcollToTopButtonView }, {
     props: { scrollPosition },
     actions: { ScrollToTopButtonActions }

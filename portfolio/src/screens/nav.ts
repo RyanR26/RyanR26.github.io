@@ -1,5 +1,5 @@
 import * as data from '../data/nav.json';
-import { nav, div, ul, li, a, button } from '../../vendor/modules/HTMLElements.js';
+import { nav, div, h1, h2, ul, li, a, button } from '../../vendor/modules/HTMLElements.js';
 import { Link } from '../../vendor/modules/Router.js';
 import { Debounce } from '../../vendor/modules/time.js';
 import { LogoView } from '../partials/logo.js';
@@ -142,8 +142,8 @@ export const NavView =
 
   const heading = (): void => {
     e(div, { class: 'center stack-content' })
-      e(div, { class: 'pink-text', text: data.heading.title }); x(div)
-      e(div, { class: 'font-xsmall', text: data.heading.subtitle }); x(div)
+      e(h1, { class: 'pink-text', text: data.heading.title }); x(h1)
+      e(h2, { class: 'font-xsmall', text: data.heading.subtitle }); x(h2)
     x(div)
   }
 

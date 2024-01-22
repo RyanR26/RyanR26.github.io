@@ -176,12 +176,6 @@ const App = {
       watch: state.router.current
     },
     { 
-      name: IntersectObserver,
-      action: actions.globalActions.triggerAnimation,
-      options: { target: '.intro-animation', threshold: 0.3 },
-      watch: state.router.current
-    },
-    { 
       name: 'resize',
       action: actions.globalActions.setViewportSize
     },
